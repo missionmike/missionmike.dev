@@ -12,7 +12,7 @@ const siteMetadata = {
   socialBanner: '/static/images/twitter-card.png',
   email: 'holler@missionmike.dev',
   github: 'https://github.com/missionmike',
-  twitter: 'https://twitter.com/missionmike.dev',
+  twitter: 'https://twitter.com/missionmikedev',
   facebook: 'https://facebook.com/missionmike',
   youtube: 'https://www.youtube.com/channel/UC3m6NxN3ZhCpYkL4LM8gHMg',
   linkedin: 'https://www.linkedin.com/in/michaeldinerstein',
