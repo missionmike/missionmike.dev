@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'missionmike.dev Blog',
   author: 'Michael R. Dinerstein',
   headerTitle: 'missionmike.dev',
-  description: 'A blog of musings by Michael.',
+  description: "A collection of Michael's musings.",
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.missionmike.dev/',
