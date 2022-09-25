@@ -1,6 +1,12 @@
 import React from 'react';
 import styles from './icons.module.scss';
 
+/**
+ * GitHub icon component, used to link to the platform.
+ *
+ * @param {string} url the url to link out to.
+ * @returns {React.ReactElement} social media icon with link.
+ */
 const IconGitHub = ({ url }: { url: string }) => {
   return (
     <a

@@ -1,6 +1,12 @@
 import React from 'react';
 import styles from './icons.module.scss';
 
+/**
+ * Twitter icon component, used to link to the platform.
+ *
+ * @param {string} url the url to link out to.
+ * @returns {React.ReactElement} social media icon with link.
+ */
 const IconTwitter = ({ url }: { url: string }) => {
   return (
     <a

@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Instagram gradient SVG style definitions used by the
+ * Instagram icon.
+ *
+ * @returns {React.ReactElement} required SVG definitions for gradient.
+ */
 const IconInstagramDefs = () => {
   return (
     <div style={{ width: 0, height: 0 }}>
