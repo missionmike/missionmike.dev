@@ -1,4 +1,4 @@
-import CopyStatus from '../components/CopyStatus';
+import { CopyStatus } from '../components/CopyStatus';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { DebounceInput } from 'react-debounce-input';
 import { Layout } from '../components/Layout/Layout';

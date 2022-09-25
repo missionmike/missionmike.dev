@@ -21,10 +21,10 @@ const CopyText = function ({ copied = false, copyText = '' }: ICopy) {
 
 const CopyStatus = ({ copied = false, copyText = '' }: ICopy) => {
   return (
-    <span className={`copy-status ${copied === true ? `copied text-pink-500` : ``}`}>
+    <span className={`copy-status ${copied === true ? `copied` : ``}`}>
       <CopyText copied={copied} copyText={copyText} />
     </span>
   );
 };
 
-export default CopyStatus;
+export { CopyStatus, CopyText };
