@@ -1,11 +1,20 @@
+import { CommonSEO } from './Header/SEO';
 import { Footer } from './Footer/Footer';
 import React from 'react';
-import { SEO } from './Header/SEO';
+import { siteMetadata } from 'data/siteMetadata';
 
-const Layout = ({ children }: { children?: React.ReactElement | React.ReactElement[] }) => {
+const Layout = ({
+  title = siteMetadata.title,
+  description = siteMetadata.description,
+  children,
+}: {
+  title?: string;
+  description?: string;
+  children?: React.ReactElement | React.ReactElement[];
+}) => {
   return (
     <>
-      <SEO />
+      <CommonSEO title={title} description={description} />
       <main>{children}</main>
       <Footer />
     </>

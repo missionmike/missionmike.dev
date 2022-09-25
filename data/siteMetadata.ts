@@ -11,11 +11,12 @@ const siteMetadata = {
   image: '/static/images/missionmike-profile.jpeg',
   socialBanner: '/static/images/twitter-card.png',
   email: 'holler@missionmike.dev',
-  github: 'https://github.com/missionmike',
+  gitHub: 'https://github.com/missionmike',
   twitter: 'https://twitter.com/missionmikedev',
   facebook: 'https://facebook.com/missionmike',
-  youtube: 'https://www.youtube.com/channel/UC3m6NxN3ZhCpYkL4LM8gHMg',
-  linkedin: 'https://www.linkedin.com/in/michaeldinerstein',
+  youTube: 'https://www.youtube.com/channel/UC3m6NxN3ZhCpYkL4LM8gHMg',
+  linkedIn: 'https://www.linkedin.com/in/michaeldinerstein',
+  instagram: 'https://www.instagram.com/missionmike.dev',
 };
 
 export { siteMetadata };
