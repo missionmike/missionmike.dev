@@ -1,30 +1,17 @@
 import React from 'react';
 
-interface ICopy {
+const CopyStatus = ({
+  copied = false,
+  copyText = '(click to copy)',
+}: {
   copied: boolean;
-  copyText: string;
-}
-
-const CopyText = function ({ copied = false, copyText = '' }: ICopy) {
-  let returnText = `(click to copy)`;
-
-  if (copied === true) {
-    returnText = `Copied!`;
-  } else if (copyText && copyText === 'none') {
-    returnText = ``;
-  } else if (copyText) {
-    returnText = copyText;
-  }
-
-  return <React.Fragment>{returnText}</React.Fragment>;
-};
-
-const CopyStatus = ({ copied = false, copyText = '' }: ICopy) => {
+  copyText?: string;
+}) => {
   return (
     <span className={`copy-status ${copied === true ? `copied` : ``}`}>
-      <CopyText copied={copied} copyText={copyText} />
+      <React.Fragment>{copied === true ? `Copied!` : copyText}</React.Fragment>
     </span>
   );
 };
 
-export { CopyStatus, CopyText };
+export { CopyStatus };

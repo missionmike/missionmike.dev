@@ -1,0 +1,108 @@
+@import 'styles/variables';
+
+// Main component.
+.carousel {
+  overflow: visible;
+  margin-top: 2rem;
+
+  // Inner container, contains all slides.
+  :global .carousel-inner {
+    overflow: visible;
+  }
+
+  // Individual slide items, includes captions.
+  :global .carousel-item {
+    display: block;
+    transition: opacity 200ms ease;
+    border-radius: 50px;
+    box-shadow: 3px 3px 13px rgba(0, 0, 0, 0.25);
+    line-height: 0;
+    overflow: visible;
+
+    &.active {
+      transform: rotate(-10deg);
+      z-index: 9;
+
+      .carousel-caption {
+        display: block;
+        opacity: 1;
+        transform: translateY(12rem) translateX(-3rem) rotate(10deg);
+      }
+
+      img {
+        opacity: 1;
+      }
+    }
+
+    &.active + .carousel-item {
+      transform: rotate(-5deg);
+    }
+
+    img {
+      transition: opacity 100ms ease;
+      border-radius: 50px;
+      opacity: 0.5;
+    }
+
+    .carousel-caption {
+      line-height: 1.7rem;
+      text-align: justify;
+      transition: none;
+      opacity: 0;
+      transform: translateY(10rem) rotate(10deg);
+      right: 0;
+      left: 0;
+      h3,
+      p {
+        color: black;
+      }
+    }
+  }
+
+  :global .carousel-control-prev,
+  :global .carousel-control-next {
+    z-index: 11;
+    background-color: black;
+    border: 3px solid $pink;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+    transition: opacity 200ms ease;
+    opacity: 0.75;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  :global .carousel-control-prev {
+    transform: translateX(-2rem);
+  }
+
+  :global .carousel-control-next {
+    transform: translateX(2rem);
+  }
+
+  // Dot navigation indicators.
+  :global .carousel-indicators {
+    position: absolute;
+    transform: translateY(12rem);
+    z-index: 10;
+
+    button {
+      background-color: $gray;
+      border: 2px solid $blue;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      margin: 0 0.5rem;
+      transition: all 500ms ease;
+
+      &.active {
+        background-color: $pink;
+        border-color: $pink;
+      }
+    }
+  }
+}

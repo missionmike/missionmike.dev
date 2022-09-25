@@ -1,0 +1,17 @@
+.index {
+  padding: 4rem;
+
+  :global h1 {
+    letter-spacing: 0.7rem;
+
+    span.suffix {
+      color: #999;
+    }
+
+    span.subtitle {
+      font-size: 1rem;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+  }
+}
