@@ -70,7 +70,7 @@ exports[`SocialBar component renders the component 1`] = `
     </a>
     <a
       class="icon"
-      href="https://facebook.com/missionmike"
+      href="https://facebook.com/missionmike.dev"
       rel="noopener noreferrer"
       target="_blank"
       title="Follow Mission Mike on Twitter"

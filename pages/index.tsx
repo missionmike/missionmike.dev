@@ -15,7 +15,15 @@ export default function Home() {
               MissionMike<span className="suffix">.dev</span>
               <br />
               <span className="subtitle">
-                I&apos;m a software developer. I also do other things.
+                I&apos;m a software developer. I also do{' '}
+                {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                <a
+                  href="https://linktr.ee/missionmike"
+                  target="_blank"
+                  style={{ textDecoration: 'none' }}
+                >
+                  other things.
+                </a>
               </span>
             </h1>
             <SocialBar />

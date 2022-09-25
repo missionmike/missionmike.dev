@@ -13,7 +13,7 @@ const siteMetadata = {
   email: 'holler@missionmike.dev',
   gitHub: 'https://github.com/missionmike',
   twitter: 'https://twitter.com/missionmikedev',
-  facebook: 'https://facebook.com/missionmike',
+  facebook: 'https://facebook.com/missionmike.dev',
   youTube: 'https://www.youtube.com/channel/UC3m6NxN3ZhCpYkL4LM8gHMg',
   linkedIn: 'https://www.linkedin.com/in/michaeldinerstein',
   instagram: 'https://www.instagram.com/missionmike.dev',
