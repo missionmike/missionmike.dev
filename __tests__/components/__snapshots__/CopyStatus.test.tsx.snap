@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CopyStatus component renders the component 1`] = `
+<div>
+  <span
+    class="copy-status copied"
+  >
+    Copied!
+  </span>
+</div>
+`;
