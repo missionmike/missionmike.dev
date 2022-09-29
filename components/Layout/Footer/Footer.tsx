@@ -1,5 +1,5 @@
 const Footer = () => {
-  return <footer></footer>;
+  return <footer>Copyright &copy; {new Date().getFullYear()} Michael R. Dinerstein.</footer>;
 };
 
 export { Footer };
