@@ -1,0 +1,34 @@
+.header {
+  position: sticky;
+  top: 0;
+  height: auto;
+  width: 100%;
+  padding: 0;
+  background-color: white;
+  line-height: 0;
+  z-index: 10;
+  border-bottom: 1px solid #eee;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-grow: 0;
+    padding: 0;
+    margin: 0;
+    line-height: 2rem;
+
+    li {
+      list-style: none;
+      transition: all 500ms ease;
+
+      a {
+        display: block;
+        padding: 1rem 2rem;
+      }
+
+      &:hover {
+        background-color: #efefef;
+      }
+    }
+  }
+}
