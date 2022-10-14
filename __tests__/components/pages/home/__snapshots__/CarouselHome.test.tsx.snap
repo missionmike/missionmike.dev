@@ -93,7 +93,7 @@ exports[`SocialBar component renders the component 1`] = `
           class="carousel-caption"
         >
           <p>
-            I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus. They're helpful debugging partners. Sometimes their snoring can be overheard during Zoom meetings.
+            I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus. Sometimes their snoring can be overheard during Zoom meetings.
           </p>
         </div>
       </div>

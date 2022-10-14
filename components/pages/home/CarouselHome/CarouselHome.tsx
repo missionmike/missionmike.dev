@@ -42,8 +42,7 @@ const CarouselHome = () => {
         <Carousel.Caption>
           <p>
             I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus.
-            They&apos;re helpful debugging partners. Sometimes their snoring can be overheard during
-            Zoom meetings.
+            Sometimes their snoring can be overheard during Zoom meetings.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

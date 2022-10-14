@@ -3,7 +3,7 @@
 // Main component.
 .carousel {
   overflow: visible;
-  margin-top: 2rem;
+  margin-top: 3rem;
 
   // Inner container, contains all slides.
   :global .carousel-inner {
@@ -26,7 +26,7 @@
       .carousel-caption {
         display: block;
         opacity: 1;
-        transform: translateX(-3rem) rotate(10deg);
+        transform: translateX(-3rem) translateY(12rem) rotate(10deg);
       }
 
       img {
