@@ -2,6 +2,7 @@ import { Layout } from 'components/Layout/Layout';
 import { MDXRemote } from 'next-mdx-remote';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import fs from 'fs';
+import { getAllFiles } from 'helpers/files';
 import matter from 'gray-matter';
 import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -18,12 +19,10 @@ const PostPage = ({ frontMatter: { title }, mdxSource }) => {
 export default PostPage;
 
 export const getStaticPaths = async () => {
-  const getAllFiles = function (dirPath, arrayOfFiles) {
+  const getAllFiles = function (dirPath, arrayOfFiles = []) {
     const files = fs.readdirSync(dirPath);
 
-    arrayOfFiles = arrayOfFiles || [];
-
-    files.forEach(function (file) {
+    files.forEach((file) => {
       if (fs.statSync(dirPath + '/' + file).isDirectory()) {
         arrayOfFiles = getAllFiles(dirPath + '/' + file, arrayOfFiles);
       } else {
@@ -34,7 +33,6 @@ export const getStaticPaths = async () => {
     return arrayOfFiles;
   };
 
-  // const files = fs.readdirSync(path.join('posts'));
   const postsBaseDir = 'posts';
   const files = getAllFiles(postsBaseDir, []);
 

@@ -1,5 +1,7 @@
 .index {
-  padding: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  max-width: 1400px;
 
   :global h1 {
     letter-spacing: 0.7rem;
@@ -14,4 +16,8 @@
       letter-spacing: normal;
     }
   }
+}
+
+.right {
+  padding: 0 0 0 3rem;
 }

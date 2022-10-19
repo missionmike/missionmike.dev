@@ -1,0 +1,13 @@
+.previewContainer {
+  position: relative;
+}
+
+.previewTitle {
+  overflow: hidden;
+  width: 100%;
+
+  span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

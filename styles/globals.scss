@@ -1,15 +1,15 @@
+@import 'variables';
+
 * {
   box-sizing: border-box;
   font-family: 'JetBrains Mono';
+  line-height: 1.7rem;
 }
-@import 'variables';
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {

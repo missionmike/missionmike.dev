@@ -1,6 +1,7 @@
 .layout {
   display: flex;
   flex-direction: column;
+  max-width: 1400px;
 
   &.prose {
     max-width: 768px;
