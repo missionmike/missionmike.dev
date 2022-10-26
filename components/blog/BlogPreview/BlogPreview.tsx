@@ -17,10 +17,12 @@ const BlogPreview = ({ post = {} }: { post: Post }) => {
 
   return (
     <div className={styles.previewContainer}>
-      <h3 className={styles.previewTitle} title={frontMatter.title}>
+      <h2 className={styles.previewTitle} title={frontMatter.title}>
         {briefTitle}
-      </h3>
-      {parse(summary)} [...] <Link href={post.path}>Read More.</Link>
+      </h2>
+      <p>
+        {parse(summary)} [...] <Link href={post.path}>Read More.</Link>
+      </p>
     </div>
   );
 };

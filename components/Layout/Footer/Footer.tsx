@@ -1,5 +1,11 @@
+import styles from './Footer.module.scss';
+
 const Footer = () => {
-  return <footer>Copyright &copy; {new Date().getFullYear()} Michael R. Dinerstein.</footer>;
+  return (
+    <footer className={styles.footer}>
+      Copyright &copy; {new Date().getFullYear()} Michael R. Dinerstein.
+    </footer>
+  );
 };
 
 export { Footer };

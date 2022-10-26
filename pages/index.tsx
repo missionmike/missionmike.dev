@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { BlogPreview } from 'components/blog/BlogPreview/BlogPreview';
 import { CarouselHome } from 'components/pages/home/CarouselHome/CarouselHome';
 import { Layout } from 'components/Layout/Layout';
+import Link from 'next/link';
 import { Post } from 'types/post';
 import { SocialBar } from 'components/SocialBar/SocialBar';
 import fs from 'fs';
@@ -11,7 +12,13 @@ import matter from 'gray-matter';
 import path from 'path';
 import styles from 'styles/pages/index.module.scss';
 
-export default function Home({ latestPost = {} }: { latestPost?: Post }) {
+export default function Home({
+  latestPost = {},
+  tags = [],
+}: {
+  latestPost?: Post;
+  tags?: string[];
+}) {
   return (
     <Layout>
       <Container className={styles.index}>
@@ -37,10 +44,19 @@ export default function Home({ latestPost = {} }: { latestPost?: Post }) {
           </Col>
           <Col className={styles.right}>
             <Container>
-              <h2 style={{ textTransform: 'uppercase', color: 'gray', fontWeight: 'normal' }}>
-                Latest attempt at writing.
-              </h2>
+              <span className={styles.h2}>Latest attempt at writing.</span>
               <BlogPreview post={latestPost} />
+            </Container>
+            <Container>
+              <br />
+              <h2 className={styles.h2}>Tags &amp; Categories</h2>
+              {tags.map((tag, index) => {
+                return (
+                  <Link href={`/blog/tags/${tag}`} key={index}>
+                    <span className={styles.tagLink}>{tag}</span>
+                  </Link>
+                );
+              })}
             </Container>
           </Col>
         </Row>
@@ -50,7 +66,9 @@ export default function Home({ latestPost = {} }: { latestPost?: Post }) {
 }
 
 export const getStaticProps = async () => {
-  const files = getAllFiles('posts');
+  const files = getAllFiles('posts'),
+    tags = [];
+
   let latestPostDate: Date = null,
     latestPost: Post = {};
 
@@ -64,6 +82,8 @@ export const getStaticProps = async () => {
 
     const { data: frontMatter } = matter(markdownWithMeta);
 
+    if (frontMatter?.tags) tags.push(frontMatter.tags);
+
     if (!latestPostDate || (frontMatter?.date && new Date(frontMatter?.date) > latestPostDate)) {
       latestPostDate = new Date(frontMatter.date);
       latestPost.content = markdownWithMeta;
@@ -71,11 +91,10 @@ export const getStaticProps = async () => {
     }
   });
 
-  // const { data: frontMatter, content } = matter(markdownWithMeta);
-  // const mdxSource = await serialize(content);
   return {
     props: {
       latestPost,
+      tags: [...new Set(tags.flat())],
     },
   };
 };

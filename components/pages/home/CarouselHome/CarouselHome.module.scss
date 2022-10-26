@@ -4,6 +4,7 @@
 .carousel {
   overflow: visible;
   margin-top: 3rem;
+  padding-bottom: 12rem;
 
   // Inner container, contains all slides.
   :global .carousel-inner {
@@ -78,17 +79,16 @@
   }
 
   :global .carousel-control-prev {
-    transform: translateX(-2rem);
+    transform: translateX(-2rem) translateY(-5rem);
   }
 
   :global .carousel-control-next {
-    transform: translateX(2rem);
+    transform: translateX(2rem) translateY(-5rem);
   }
 
   // Dot navigation indicators.
   :global .carousel-indicators {
     position: absolute;
-    transform: translateY(12rem);
     z-index: 10;
 
     button {
