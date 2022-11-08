@@ -4,7 +4,7 @@
 .carousel {
   overflow: visible;
   margin-top: 3rem;
-  padding-bottom: 12rem;
+  padding-bottom: 13rem;
 
   // Inner container, contains all slides.
   :global .carousel-inner {
@@ -14,6 +14,8 @@
   // Individual slide items, includes captions.
   :global .carousel-item {
     display: block;
+    width: 90%;
+    margin-left: 5%;
     transition: opacity 200ms ease;
     border-radius: 50px;
     box-shadow: 3px 3px 13px rgba(0, 0, 0, 0.25);
@@ -27,10 +29,12 @@
       .carousel-caption {
         display: block;
         opacity: 1;
-        transform: translateX(-3rem) translateY(12rem) rotate(10deg);
+        transform: translateX(-3rem) translateY(13rem) rotate(10deg);
       }
 
       img {
+        width: 100%;
+        height: auto;
         opacity: 1;
       }
     }
@@ -40,6 +44,8 @@
     }
 
     img {
+      width: 100%;
+      height: auto;
       transition: opacity 100ms ease;
       border-radius: 50px;
       opacity: 0.5;
@@ -79,16 +85,17 @@
   }
 
   :global .carousel-control-prev {
-    transform: translateX(-2rem) translateY(-5rem);
+    transform: translateX(-1rem) translateY(-5rem);
   }
 
   :global .carousel-control-next {
-    transform: translateX(2rem) translateY(-5rem);
+    transform: translateX(1rem) translateY(-5rem);
   }
 
   // Dot navigation indicators.
   :global .carousel-indicators {
     position: absolute;
+    bottom: -1rem;
     z-index: 10;
 
     button {

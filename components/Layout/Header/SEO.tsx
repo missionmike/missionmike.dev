@@ -19,7 +19,7 @@ export const CommonSEO = ({
   canonicalUrl?: string;
 }) => {
   const router = useRouter();
-  console.log(title);
+
   return (
     <Head>
       <title>{title}</title>

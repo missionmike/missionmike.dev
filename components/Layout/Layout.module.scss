@@ -1,6 +1,10 @@
-.layout {
+.layoutWrapper {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout {
   max-width: 1400px;
 
   &.prose {

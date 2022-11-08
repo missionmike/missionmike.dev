@@ -23,7 +23,7 @@ export default function Home({
     <Layout>
       <Container className={styles.index}>
         <Row>
-          <Col>
+          <Col className="w-50">
             <h1>
               MissionMike<span className="suffix">.dev</span>
               <br />
@@ -52,7 +52,7 @@ export default function Home({
               <h2 className={styles.h2}>Tags &amp; Categories</h2>
               {tags.map((tag, index) => {
                 return (
-                  <Link href={`/blog/tags/${tag}`} key={index}>
+                  <Link href={`/blog/tag/${tag}`} key={index}>
                     <span className={styles.tagLink}>{tag}</span>
                   </Link>
                 );

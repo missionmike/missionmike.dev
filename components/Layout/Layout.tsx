@@ -22,7 +22,7 @@ const Layout = ({
 }) => {
   const isProse = false;
   return (
-    <>
+    <div className={styles.layoutWrapper}>
       <Header />
       <Container as="main" className={`${className} ${styles.layout} ${isProse ? 'prose' : ''}`}>
         {
@@ -31,9 +31,9 @@ const Layout = ({
           }[pageSEO]
         }
         {children}
-        <Footer />
       </Container>
-    </>
+      <Footer />
+    </div>
   );
 };
 
