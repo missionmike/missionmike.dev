@@ -12,15 +12,16 @@ const Layout = ({
   description = siteMetadata.description,
   className = '',
   pageSEO = 'common',
+  isProse = false,
   children,
 }: {
   title?: string;
   description?: string;
   className?: string;
   pageSEO?: PageSEO;
+  isProse?: boolean;
   children?: React.ReactElement | React.ReactElement[];
 }) => {
-  const isProse = false;
   return (
     <div className={styles.layoutWrapper}>
       <Header />
@@ -30,7 +31,7 @@ const Layout = ({
             common: <CommonSEO title={title} description={description} />,
           }[pageSEO]
         }
-        {children}
+        <div className={isProse ? 'prose' : ''}>{children}</div>
       </Container>
       <Footer />
     </div>

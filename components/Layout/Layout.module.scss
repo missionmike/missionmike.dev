@@ -7,7 +7,9 @@
 .layout {
   max-width: 1400px;
 
-  &.prose {
-    max-width: 768px;
+  :global .prose {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-top: 4rem;
   }
 }

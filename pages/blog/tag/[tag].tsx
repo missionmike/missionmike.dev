@@ -38,8 +38,7 @@ const TagPage = ({ tag, posts }) => {
 export default TagPage;
 
 export const getStaticPaths = async () => {
-  const files = getAllFiles('posts', []);
-  const tags = files
+  const tags = getAllFiles('posts', [])
     .map((file) => {
       const markdownWithMeta = fs.readFileSync(path.join(file), 'utf-8');
       const { data: frontMatter } = matter(markdownWithMeta);

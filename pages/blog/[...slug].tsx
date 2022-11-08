@@ -9,7 +9,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 
 const PostPage = ({ frontMatter: { title }, mdxSource }) => {
   return (
-    <Layout>
+    <Layout isProse={true}>
       <h1>{title}</h1>
       <MDXRemote {...mdxSource} components={{ SyntaxHighlighter }} />
     </Layout>
