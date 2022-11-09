@@ -20,7 +20,7 @@ export default function Home({
   tags?: string[];
 }) {
   return (
-    <Layout>
+    <Layout title={'Mission Mike | Developer Musings'}>
       <Container className={styles.index}>
         <Row>
           <Col className="w-50">
@@ -35,7 +35,7 @@ export default function Home({
                   target="_blank"
                   style={{ textDecoration: 'none' }}
                 >
-                  other things.
+                  some other things.
                 </a>
               </span>
             </h1>
@@ -44,7 +44,7 @@ export default function Home({
           </Col>
           <Col className={styles.right}>
             <Container>
-              <span className={styles.h2}>Latest attempt at writing.</span>
+              <span className={styles.h2}>Latest attempt at writing:</span>
               <BlogPreview post={latestPost} />
             </Container>
             <Container>

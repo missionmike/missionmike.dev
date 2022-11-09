@@ -49,7 +49,26 @@ exports[`SocialBar component renders the component 1`] = `
           class="carousel-caption"
         >
           <p>
-            Playing video games with my kids and recording our gameplay together is my fav!! Learn about our channels Mikey & Daddy and Sleepy Slawth Gaming.
+            Playing video games with my kids and recording our gameplay together is my fav!! Check out our YouTube channels
+             
+            <a
+              href="https://www.youtube.com/@MikeyNDaddy"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Mikey & Daddy
+            </a>
+             
+            and
+             
+            <a
+              href="https://www.youtube.com/@sleepyslawths"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Sleepy Slawths
+            </a>
+            .
           </p>
         </div>
       </div>
@@ -71,7 +90,7 @@ exports[`SocialBar component renders the component 1`] = `
           class="carousel-caption"
         >
           <p>
-            I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus. Sometimes their snoring can be overheard during Zoom meetings.
+            I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus. Sometimes I fear their snoring can be overheard during Zoom meetings.
           </p>
         </div>
       </div>

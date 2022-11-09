@@ -27,8 +27,24 @@ const CarouselHome = () => {
         />
         <Carousel.Caption>
           <p>
-            Playing video games with my kids and recording our gameplay together is my fav!! Learn
-            about our channels Mikey &amp; Daddy and Sleepy Slawth Gaming.
+            Playing video games with my kids and recording our gameplay together is my fav!! Check
+            out our YouTube channels{' '}
+            <a
+              href="https://www.youtube.com/@MikeyNDaddy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mikey &amp; Daddy
+            </a>{' '}
+            and{' '}
+            <a
+              href="https://www.youtube.com/@sleepyslawths"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sleepy Slawths
+            </a>
+            .
           </p>
         </Carousel.Caption>
       </Carousel.Item>
@@ -42,7 +58,7 @@ const CarouselHome = () => {
         <Carousel.Caption>
           <p>
             I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus.
-            Sometimes their snoring can be overheard during Zoom meetings.
+            Sometimes I fear their snoring can be overheard during Zoom meetings.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

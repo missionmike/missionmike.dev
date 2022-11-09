@@ -1,5 +1,6 @@
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
+import Image from 'next/image';
 import { Layout } from 'components/Layout/Layout';
 import Link from 'next/link';
 import fs from 'fs';
@@ -12,21 +13,36 @@ const TagPage = ({ tag, posts }) => {
   return (
     <Layout>
       <Container>
-        <h1>
-          <span>Tag:</span> {tag}
+        <h1 className={styles.h1}>
+          <span className="lightgray font-weight-normal">Tag:</span> {tag}
         </h1>
         {posts.map((post, index) => {
           const { frontMatter, href } = post;
           return (
             <Row key={`post-preview-${index}`} className={styles.postPreview}>
-              <Link href={href}>
-                <h2>{frontMatter.title}</h2>
-              </Link>
-              <div>
-                <p>
-                  {frontMatter.summary} [<Link href={href}>read more</Link>]
-                </p>
-              </div>
+              {frontMatter?.featuredImage ? (
+                <Col className={styles.featuredImageContainer}>
+                  <Image
+                    src={`/static/images/${frontMatter.featuredImage}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+                    alt=""
+                    style={{ objectFit: 'cover' }}
+                  ></Image>
+                </Col>
+              ) : null}
+              <Col className={styles.postContentPreviewContainer}>
+                <Link href={href}>
+                  <h2>{frontMatter.title}</h2>
+                </Link>
+                <div>
+                  <p>
+                    {frontMatter.summary} [<Link href={href}>read more</Link>]
+                  </p>
+                </div>
+              </Col>
             </Row>
           );
         })}

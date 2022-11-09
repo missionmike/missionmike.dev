@@ -1,3 +1,17 @@
+.h1 {
+  margin-top: 2rem;
+}
+
 .postPreview {
   margin-top: 2rem;
+}
+
+.featuredImageContainer {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+}
+
+.postContentPreviewContainer {
+  padding: 1rem 2rem;
 }
