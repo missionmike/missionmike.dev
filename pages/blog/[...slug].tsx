@@ -11,7 +11,24 @@ const PostPage = ({ frontMatter: { title }, mdxSource }) => {
   return (
     <Layout isProse={true}>
       <h1>{title}</h1>
-      <MDXRemote {...mdxSource} components={{ SyntaxHighlighter }} />
+      <MDXRemote
+        {...mdxSource}
+        components={{
+          code: (props) => {
+            const match = /language-(\w+)/.exec(props?.className || '');
+            return (
+              <SyntaxHighlighter
+                language={match?.length >= 1 ? match[1] : 'javascript'}
+                PreTag="div"
+                {...props}
+              />
+            );
+          },
+          h2: (props) => <h2 {...props} />,
+          h3: (props) => <h3 {...props} />,
+          h4: (props) => <h4 {...props} />,
+        }}
+      />
     </Layout>
   );
 };
