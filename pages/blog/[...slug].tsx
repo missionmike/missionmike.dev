@@ -1,34 +1,17 @@
 import { Layout } from 'components/Layout/Layout';
+import { MDXComponents } from 'components/MDXComponents/MDXComponents';
 import { MDXRemote } from 'next-mdx-remote';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import fs from 'fs';
-import { getAllFiles } from 'helpers/files';
 import matter from 'gray-matter';
 import path from 'path';
+import rehypeHighlight from 'rehype-highlight';
 import { serialize } from 'next-mdx-remote/serialize';
 
 const PostPage = ({ frontMatter: { title }, mdxSource }) => {
   return (
     <Layout isProse={true}>
       <h1>{title}</h1>
-      <MDXRemote
-        {...mdxSource}
-        components={{
-          code: (props) => {
-            const match = /language-(\w+)/.exec(props?.className || '');
-            return (
-              <SyntaxHighlighter
-                language={match?.length >= 1 ? match[1] : 'javascript'}
-                PreTag="div"
-                {...props}
-              />
-            );
-          },
-          h2: (props) => <h2 {...props} />,
-          h3: (props) => <h3 {...props} />,
-          h4: (props) => <h4 {...props} />,
-        }}
-      />
+      <MDXRemote {...mdxSource} components={MDXComponents} />
     </Layout>
   );
 };
@@ -70,7 +53,11 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const slugStr = Array.isArray(slug) ? slug.join('/') : slug;
   const markdownWithMeta = fs.readFileSync(path.join('posts', slugStr + '.mdx'), 'utf-8');
   const { data: frontMatter, content } = matter(markdownWithMeta);
-  const mdxSource = await serialize(content);
+
+  const mdxSource = await serialize(content, {
+    mdxOptions: { rehypePlugins: [rehypeHighlight] },
+  });
+
   return {
     props: {
       frontMatter,
