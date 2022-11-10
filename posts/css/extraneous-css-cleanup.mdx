@@ -104,7 +104,7 @@ But for simplicity’s sake, we won’t go down that rabbit hole now.
 Next, in order to be more certain that this CSS class doesn’t appear within the website, I ran a
 Select-String on the downloaded HTML (6600+ files!) to see if info-box appears anywhere:
 
-```powershell
+```shell
 > Select-String ./\*.html -Pattern 'info-box'
 >
 ```
@@ -112,7 +112,7 @@ Select-String on the downloaded HTML (6600+ files!) to see if info-box appears a
 Nope! All clear! If the string did appear somewhere in the HTML output, I’d have visibility into
 where. See here for example, using a different string “vertical”:
 
-```powershell
+```shell
 > Select-String ./\*.html -Pattern 'vertical'
 .1E592CD9.html:731:					<div class="connector vertical"><span class="end fancy"></span></div>
 .1E592CD9.html:753:					<div class="connector vertical"><span class="end fancy"></span></div>

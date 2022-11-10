@@ -1,4 +1,4 @@
-@import 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark.min.css';
 @import 'variables';
 
 * {
@@ -39,7 +39,10 @@ h1 {
   code {
     background-color: #eee;
     padding: 0.3rem 0.7rem;
-    border-radius: 3px;
+  }
+  pre code {
+    background-color: #012;
+    padding: 1rem;
   }
 }
 
