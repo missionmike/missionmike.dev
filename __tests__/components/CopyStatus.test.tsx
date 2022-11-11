@@ -1,4 +1,4 @@
-import { CopyStatus } from 'components/CopyStatus';
+import { CopyStatus } from 'components/CopyStatus/CopyStatus';
 import React from 'react';
 import { render } from '@testing-library/react';
 

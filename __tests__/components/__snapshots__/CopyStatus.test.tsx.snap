@@ -3,7 +3,8 @@
 exports[`CopyStatus component renders the component when copied 1`] = `
 <div>
   <span
-    class="copy-status copied"
+    class="copyStatus"
+    data-copied="true"
   >
     Copied!
   </span>
@@ -13,7 +14,8 @@ exports[`CopyStatus component renders the component when copied 1`] = `
 exports[`CopyStatus component renders the component with custom copy text 1`] = `
 <div>
   <span
-    class="copy-status copied"
+    class="copyStatus"
+    data-copied="true"
   >
     Copied!
   </span>
@@ -23,7 +25,8 @@ exports[`CopyStatus component renders the component with custom copy text 1`] = 
 exports[`CopyStatus component renders the component with default copy text 1`] = `
 <div>
   <span
-    class="copy-status copied"
+    class="copyStatus"
+    data-copied="true"
   >
     Copied!
   </span>

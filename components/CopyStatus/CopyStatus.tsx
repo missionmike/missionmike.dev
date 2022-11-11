@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './CopyStatus.module.scss';
 
 const CopyStatus = ({
   copied = false,
@@ -8,7 +9,7 @@ const CopyStatus = ({
   copyText?: string;
 }) => {
   return (
-    <span className={`copy-status ${copied === true ? `copied` : ``}`}>
+    <span className={styles.copyStatus} data-copied={copied}>
       <React.Fragment>{copied === true ? `Copied!` : copyText}</React.Fragment>
     </span>
   );

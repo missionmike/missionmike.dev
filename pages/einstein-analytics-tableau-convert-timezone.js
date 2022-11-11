@@ -1,9 +1,10 @@
-import { CopyStatus } from '../components/CopyStatus';
+import { CodeBlock } from 'components/CodeBlock/CodeBlock';
+import { CopyStatus } from '../components/CopyStatus/CopyStatus';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { DebounceInput } from 'react-debounce-input';
 import { Layout } from '../components/Layout/Layout';
 import React from 'react';
-import SelectTimezone from '../components/SelectTimezone';
+import SelectTimezone from '../components/SelectTimezone/SelectTimezone';
 
 const Input = () => {
   return <input />;
@@ -294,7 +295,7 @@ class EinsteinAnalyticsConvertTimezone extends React.Component {
               text={this.state.dateTimeConvertedVariableFormulaNoDST}
               onCopy={() => this.setState({ dateTimeConvertedVariableNameCopied: true })}
             >
-              <div>{this.state.dateTimeConvertedVariableFormulaNoDST}</div>
+              <CodeBlock>{this.state.dateTimeConvertedVariableFormulaNoDST}</CodeBlock>
             </CopyToClipboard>
           </div>
           <div
@@ -319,7 +320,7 @@ class EinsteinAnalyticsConvertTimezone extends React.Component {
               text={this.state.dateTimeFieldEpochFormula}
               onCopy={() => this.setState({ dateTimeEpochVariableNameCopied: true })}
             >
-              <div>{this.state.dateTimeFieldEpochFormula}</div>
+              <CodeBlock>{this.state.dateTimeFieldEpochFormula}</CodeBlock>
             </CopyToClipboard>
             <h3>Field #2:</h3>
             <p>
@@ -331,7 +332,6 @@ class EinsteinAnalyticsConvertTimezone extends React.Component {
               Type: <em>Numeric (precision: 17, scale: 0)</em>
             </p>
             <label>
-              {' '}
               <CopyStatus
                 copied={this.state.dateTimeFieldEpochFormulaCopied}
                 copyText={`Click below to copy formula for ${this.state.dateTimeEpochConvertedVariableName}`}
@@ -341,7 +341,7 @@ class EinsteinAnalyticsConvertTimezone extends React.Component {
               text={this.state.dateTimeEpochConvertedFormula}
               onCopy={() => this.setState({ dateTimeFieldEpochFormulaCopied: true })}
             >
-              <div>{this.state.dateTimeEpochConvertedFormula}</div>
+              <CodeBlock>{this.state.dateTimeEpochConvertedFormula}</CodeBlock>
             </CopyToClipboard>
             <h3>Field #3:</h3>
             <p>
@@ -351,7 +351,6 @@ class EinsteinAnalyticsConvertTimezone extends React.Component {
               Type: <em>Date</em>
             </p>
             <label>
-              {' '}
               <CopyStatus
                 copied={this.state.dateTimeConvertedVariableNameCopied}
                 copyText={`Click below to copy formula for ${this.state.dateTimeConvertedVariableName}`}
@@ -361,11 +360,7 @@ class EinsteinAnalyticsConvertTimezone extends React.Component {
               text={this.state.dateTimeEpochConvertedFormulaDST}
               onCopy={() => this.setState({ dateTimeConvertedVariableNameCopied: true })}
             >
-              <div style={{ padding: 0 }}>
-                <pre className="language-javascript max-w-full whitespace-pre-wrap">
-                  {this.state.dateTimeEpochConvertedFormulaDST}
-                </pre>
-              </div>
+              <CodeBlock> {this.state.dateTimeEpochConvertedFormulaDST}</CodeBlock>
             </CopyToClipboard>
           </div>
         </div>
