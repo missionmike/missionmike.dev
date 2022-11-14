@@ -2,8 +2,6 @@ import { Col, Container, FormControl, Row } from 'react-bootstrap';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { CodeBlock } from 'components/CodeBlock/CodeBlock';
-import { CopyStatus } from 'components/CopyStatus/CopyStatus';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Layout } from 'components/Layout/Layout';
 import SelectTimezone from 'components/SelectTimezone/SelectTimezone';
 
