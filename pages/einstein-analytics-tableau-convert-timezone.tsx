@@ -105,10 +105,6 @@ const Page = () => {
     setIsDst(parseInt(targetOptions[selectedIndex].getAttribute('data-dst'), 10) === 1);
   };
 
-  const updateCopyStatus = (evt) => {
-    // console.log(evt?.target);
-  };
-
   return (
     <Layout title="Convert Timezone 🌎⏲ in Tableau (formerly Einstein Analytics)" isProse={true}>
       <Row>
@@ -167,7 +163,7 @@ const Page = () => {
           </em>
         </p>
       </Row>
-      <Row style={{ display: supportDst ? 'flex' : 'none' }}>
+      <Row style={{ display: isDst && supportDst ? 'flex' : 'none' }}>
         <Col>
           <label htmlFor="start_year">Start Year:</label>
           <FormControl
@@ -191,7 +187,18 @@ const Page = () => {
       Hide Step #2 if there is no timezone change; SF stores values in GMT/UTC by default, so if the 
       selected timezone is UTC, there's no point in moving forward...
        */}
-      <div style={{ display: timezoneNicename === 'UTC' ? `none` : `block` }}>
+      {offset === 0 && timezoneNicename !== 'UTC' ? (
+        <Container>
+          <Row>
+            <Col>
+              <p className="mt-4 text-center">
+                Select a timezone with an offset other than <em>zero</em> in order to proceed.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      ) : null}
+      <div style={{ display: timezoneNicename === 'UTC' || offset === 0 ? `none` : `block` }}>
         <h2>Step 2: Create {isDst && supportDst ? `These Fields` : `This Field`} in Dataflow</h2>
         <p>
           In the Dataflow editor, add the following{' '}
