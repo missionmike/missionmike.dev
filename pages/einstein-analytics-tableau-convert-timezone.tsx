@@ -11,10 +11,7 @@ const Page = () => {
   const [dateTimeFieldName, setDateTimeFieldName] = useState('CreatedDate');
   const dateTimeFieldEpochFormula = `date_to_epoch(toDate(${dateTimeFieldName}, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))`;
   const dateTimeEpochVariableName = dateTimeFieldName + '_epoch';
-
-  const [dateTimeEpochConvertedFormulaDST, setDateTimeEpochConvertedFormulaDST] =
-    useState('/* Awaiting Input */');
-
+  const [dateTimeEpochConvertedFormulaDST, setDateTimeEpochConvertedFormulaDST] = useState('');
   const [startYear, setStartYear] = useState(new Date().getFullYear() - 10);
   const [endYear, setEndYear] = useState(new Date().getFullYear());
   const [timezoneRegion, setTimezoneRegion] = useState('');
@@ -28,6 +25,7 @@ const Page = () => {
     /[^a-zA-Z0-9]+/g,
     ''
   )}`;
+
   const dateTimeEpochConvertedVariableName = `${dateTimeFieldName}_${timezoneNicename.replace(
     /[^a-zA-Z0-9]+/g,
     ''
