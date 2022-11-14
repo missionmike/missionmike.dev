@@ -1,14 +1,23 @@
 import React, { ChangeEventHandler } from 'react';
 
+import { FormSelect } from 'react-bootstrap';
 const SelectTimezone = ({
   onChange = () => {
     return true;
   },
+  className = '',
 }: {
   onChange: ChangeEventHandler<HTMLSelectElement>;
+  className?: string;
 }) => {
   return (
-    <select name="timezone" id="timezone" defaultValue="-0" onChange={onChange ? onChange : null}>
+    <FormSelect
+      name="timezone"
+      id="timezone"
+      defaultValue="-0"
+      onChange={onChange ? onChange : null}
+      className={className}
+    >
       <option
         value="-12"
         data-timezone-id="International Date Line West"
@@ -3852,7 +3861,7 @@ const SelectTimezone = ({
       >
         (GMT+14:00) Pacific/Kiritimati
       </option>
-    </select>
+    </FormSelect>
   );
 };
 

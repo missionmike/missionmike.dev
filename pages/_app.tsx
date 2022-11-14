@@ -7,9 +7,11 @@ import { MDXProvider } from '@mdx-js/react';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <MDXProvider components={MDXComponents}>
-      <Component {...pageProps} />
-    </MDXProvider>
+    <>
+      <MDXProvider components={MDXComponents}>
+        <Component {...pageProps} />
+      </MDXProvider>
+    </>
   );
 }
 

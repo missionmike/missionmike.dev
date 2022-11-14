@@ -1,13 +1,11 @@
+import { Col, Container, FormControl, Row } from 'react-bootstrap';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { CodeBlock } from 'components/CodeBlock/CodeBlock';
 import { CopyStatus } from 'components/CopyStatus/CopyStatus';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { DebounceInput } from 'react-debounce-input';
 import { Layout } from 'components/Layout/Layout';
 import SelectTimezone from 'components/SelectTimezone/SelectTimezone';
-
-const Input = () => <input />;
 
 const Page = () => {
   const [dateTimeFieldName, setDateTimeFieldName] = useState('CreatedDate');
@@ -22,7 +20,7 @@ const Page = () => {
   const [timezoneRegion, setTimezoneRegion] = useState('');
   const [timezoneNicename, setTimezoneNicename] = useState('UTC');
   const [isDst, setIsDst] = useState(false);
-  const [supportDst, setSupportDst] = useState(true);
+  const [supportDst, setSupportDst] = useState(false);
   const [offset, setOffset] = useState(0);
   const [modifier, setModifier] = useState('+');
 
@@ -45,8 +43,6 @@ const Page = () => {
   )}`;
 
   const updateDSTFormula = useCallback(() => {
-    if (!isDst) return;
-
     const postData = {
       start_year: startYear,
       end_year: endYear,
@@ -77,7 +73,6 @@ const Page = () => {
     dateTimeEpochConvertedVariableName,
     dateTimeEpochVariableName,
     endYear,
-    isDst,
     startYear,
     timezoneNicename,
     timezoneRegion,
@@ -85,6 +80,7 @@ const Page = () => {
 
   useEffect(() => {
     if (
+      isDst &&
       startYear > 1918 &&
       startYear < new Date().getFullYear() &&
       endYear > 1918 &&
@@ -92,65 +88,73 @@ const Page = () => {
       startYear <= endYear
     )
       updateDSTFormula();
-  }, [startYear, endYear, updateDSTFormula]);
+  }, [isDst, startYear, endYear, updateDSTFormula]);
 
   const handleTimezoneChange = (evt) => {
     if (!evt?.target) return;
 
     const targetOptions = evt.target.options,
-      selectedIndex = evt.target.selectedIndex;
+      selectedIndex = evt.target.selectedIndex,
+      newOffset = parseInt(evt.target.value, 10);
 
-    // e.g. America/Los_Angeles
-    setTimezoneNicename(targetOptions[selectedIndex].getAttribute('data-timezone-id'));
+    setTimezoneNicename(targetOptions[selectedIndex].getAttribute('data-timezone-id')); // e.g. America/Los_Angeles
     setTimezoneRegion(targetOptions[selectedIndex].getAttribute('data-timezone-region'));
 
-    // -12 through +14
-    let newOffset = parseInt(evt.target.value, 10);
-    setOffset(newOffset);
-
-    // if offset is a negative number, modifier is for subtraction, otherwise addition
+    setOffset(newOffset); // -12 through +14
     setModifier(newOffset < 0 ? `-` : `+`);
-
-    // Does this timezone support DST (Daylight Savings Time)?
     setIsDst(parseInt(targetOptions[selectedIndex].getAttribute('data-dst'), 10) === 1);
   };
 
   return (
     <Layout title="Convert Timezone 🌎⏲ in Tableau (formerly Einstein Analytics)" isProse={true}>
-      <h1 className="mb-0">
-        Convert Timezone{' '}
-        <span role="img" aria-label="Globe Icon">
-          🌎
-        </span>
-        <span role="img" aria-label="Timer Icon">
-          ⏲
-        </span>{' '}
-        in Tableau (formerly Einstein Analytics)
-      </h1>
-      <h2>Step 1: Choose Field and Destination Timezone</h2>
-      <p> Enter the original DateTime field name, which you want to convert:</p>
-      <input
-        type="text"
-        name="date_field_name"
-        id="date_field_name"
-        placeholder="CreatedDate"
-        value={dateTimeFieldName}
-        onChange={(e) => setDateTimeFieldName(e.target.value)}
-        aria-label="DateTime field name"
-      />
-
-      <p>Select your destination timezone:</p>
-      <SelectTimezone onChange={handleTimezoneChange} />
-
-      <div style={{ display: isDst ? 'block' : 'none' }}>
-        <input
-          type="checkbox"
-          onChange={() => setSupportDst(!supportDst)}
-          defaultChecked={supportDst}
-        />
-        <span>Support Daylight Savings Time (DST)</span>
-      </div>
-      <div style={{ display: isDst ? 'block' : 'none' }}>
+      <Row>
+        <h1 className="mb-0">
+          Convert Timezone{' '}
+          <span role="img" aria-label="Globe Icon">
+            🌎
+          </span>{' '}
+          <span role="img" aria-label="Timer Icon">
+            ⏲
+          </span>{' '}
+          in Tableau
+        </h1>
+        <h2>Step 1: Choose Field and Destination Timezone</h2>
+      </Row>
+      <Row>
+        <Col>
+          <p>
+            Enter the <code>DateTime</code> field name:
+          </p>
+          <FormControl
+            type="text"
+            name="date_field_name"
+            id="date_field_name"
+            placeholder="CreatedDate"
+            value={dateTimeFieldName}
+            onChange={(e) => setDateTimeFieldName(e.target.value)}
+            aria-label="DateTime field name"
+          />
+        </Col>
+        <Col>
+          <p>Select destination timezone:</p>
+          <SelectTimezone onChange={handleTimezoneChange} />
+        </Col>
+      </Row>
+      <Row style={{ display: isDst ? 'block' : 'none' }}>
+        <Col>
+          <p style={{ marginTop: '1rem' }}>
+            <label>
+              <input
+                type="checkbox"
+                onChange={() => setSupportDst(!supportDst)}
+                defaultChecked={supportDst}
+              />{' '}
+              Support Daylight Savings Time (DST)
+            </label>
+          </p>
+        </Col>
+      </Row>
+      <Row style={{ display: isDst ? 'block' : 'none' }}>
         <p>
           <em>
             The timezone you selected supports Daylight Savings Time (DST).
@@ -161,33 +165,33 @@ const Page = () => {
               : ` If you would like to account for DST in your final formula, check the box above.`}
           </em>
         </p>
-        <div style={{ display: supportDst ? 'block' : 'none' }}>
-          <div>
-            <label htmlFor="start_year">Start Year:</label>
-            <input
-              type="number"
-              value={startYear}
-              name="start_year"
-              onChange={(e) => setStartYear(parseInt(e.target.value, 10))}
-            />
-          </div>
-          <div>
-            <label htmlFor="end_year">End Year:</label>
-            <input
-              type="number"
-              value={endYear}
-              name="end_year"
-              onChange={(e) => setEndYear(parseInt(e.target.value, 10))}
-            />
-          </div>
-        </div>
-      </div>
+      </Row>
+      <Row style={{ display: supportDst ? 'flex' : 'none' }}>
+        <Col>
+          <label htmlFor="start_year">Start Year:</label>
+          <FormControl
+            type="number"
+            value={startYear}
+            name="start_year"
+            onChange={(e) => setStartYear(parseInt(e.target.value, 10))}
+          />
+        </Col>
+        <Col>
+          <label htmlFor="end_year">End Year:</label>
+          <FormControl
+            type="number"
+            value={endYear}
+            name="end_year"
+            onChange={(e) => setEndYear(parseInt(e.target.value, 10))}
+          />
+        </Col>
+      </Row>
       {/**
       Hide Step #2 if there is no timezone change; SF stores values in GMT/UTC by default, so if the 
       selected timezone is UTC, there's no point in moving forward...
        */}
       <div style={{ display: timezoneNicename === 'UTC' ? `none` : `block` }}>
-        <h2>Step 2: Create {isDst && supportDst ? `These Fields` : `This Field`} in Dataflow!</h2>
+        <h2>Step 2: Create {isDst && supportDst ? `These Fields` : `This Field`} in Dataflow</h2>
         <p>
           In the Dataflow editor, add the following{' '}
           <a
@@ -200,63 +204,64 @@ const Page = () => {
           </a>
           :
         </p>
-        <div style={{ display: isDst === false || supportDst === false ? 'block' : 'none' }}>
-          <h3>Field</h3>
-          <p>
-            <strong>Name:</strong>{' '}
-            <code>
-              <strong>{dateTimeConvertedVariableName}</strong>
-            </code>
-            <br />
-            <strong>Type:</strong> Numeric (precision: 17, scale: 0)
-          </p>
-          <label>
-            Click below to copy formula for {dateTimeConvertedVariableName}:{' '}
-            <CopyStatus copyText="" />
-          </label>
-          <CopyToClipboard text={dateTimeConvertedVariableFormulaNoDST}>
-            <CodeBlock>{dateTimeConvertedVariableFormulaNoDST}</CodeBlock>
-          </CopyToClipboard>
-        </div>
-        <div style={{ display: isDst && supportDst ? 'block' : 'none' }}>
-          <h3>Field #1:</h3>
-          <p>
-            <strong>Name:</strong> <code>{dateTimeEpochVariableName}</code>
-            <br />
-            <strong>Type:</strong> Numeric (precision: 17, scale: 0)
-          </p>
-          <label>
-            Formula: <CopyStatus />
-          </label>
-          <CopyToClipboard text={dateTimeFieldEpochFormula}>
-            <CodeBlock>{dateTimeFieldEpochFormula}</CodeBlock>
-          </CopyToClipboard>
-          <h3>Field #2:</h3>
-          <p>
-            <strong>Name:</strong> <code>{dateTimeEpochConvertedVariableName}</code>
-            <br />
-            <strong>Type:</strong> Numeric (precision: 17, scale: 0)
-          </p>
-          <label>
-            Formula: <CopyStatus />
-          </label>
-          <CopyToClipboard text={dateTimeEpochConvertedFormula}>
-            <CodeBlock>{dateTimeEpochConvertedFormula}</CodeBlock>
-          </CopyToClipboard>
-          <h3>Field #3:</h3>
-          <p>
-            Name: <strong>{dateTimeConvertedVariableName}</strong>
-            <br />
-            Type: <em>Date</em>
-          </p>
-          <label>
-            Formula:
-            <CopyStatus />
-          </label>
-          <CopyToClipboard text={dateTimeEpochConvertedFormulaDST}>
-            <CodeBlock>{dateTimeEpochConvertedFormulaDST}</CodeBlock>
-          </CopyToClipboard>
-        </div>
+        <Container style={{ display: isDst === false || supportDst === false ? 'block' : 'none' }}>
+          <Row className="bg-light p-3">
+            <p>
+              <strong>Name:</strong>{' '}
+              <code>
+                <strong>{dateTimeConvertedVariableName}</strong>
+              </code>
+              <br />
+              <strong>Type:</strong> Numeric (precision: 17, scale: 0)
+              <br />
+              <CopyStatus />
+              <CopyToClipboard text={dateTimeConvertedVariableFormulaNoDST}>
+                <CodeBlock>{dateTimeConvertedVariableFormulaNoDST}</CodeBlock>
+              </CopyToClipboard>
+            </p>
+          </Row>
+        </Container>
+        <Container style={{ display: isDst && supportDst ? 'block' : 'none' }}>
+          <Row className="bg-light p-3">
+            <h3>Field #1</h3>
+            <p>
+              <strong>Name:</strong> <code>{dateTimeEpochVariableName}</code>
+              <br />
+              <strong>Type:</strong> Numeric (precision: 17, scale: 0)
+              <br />
+              <CopyStatus />
+              <CopyToClipboard text={dateTimeFieldEpochFormula}>
+                <CodeBlock>{dateTimeFieldEpochFormula}</CodeBlock>
+              </CopyToClipboard>
+            </p>
+          </Row>
+          <Row className="bg-light mt-4 p-3">
+            <h3>Field #2:</h3>
+            <p>
+              <strong>Name:</strong> <code>{dateTimeEpochConvertedVariableName}</code>
+              <br />
+              <strong>Type:</strong> Numeric (precision: 17, scale: 0)
+              <br />
+              <CopyStatus />
+              <CopyToClipboard text={dateTimeEpochConvertedFormula}>
+                <CodeBlock>{dateTimeEpochConvertedFormula}</CodeBlock>
+              </CopyToClipboard>
+            </p>
+          </Row>
+          <Row className="bg-light mt-4 p-3">
+            <h3>Field #3:</h3>
+            <p>
+              <strong>Name:</strong> <code>{dateTimeConvertedVariableName}</code>
+              <br />
+              <strong>Type:</strong> Date
+              <br />
+              <CopyStatus />
+              <CopyToClipboard text={dateTimeEpochConvertedFormulaDST}>
+                <CodeBlock>{dateTimeEpochConvertedFormulaDST}</CodeBlock>
+              </CopyToClipboard>
+            </p>
+          </Row>
+        </Container>
       </div>
     </Layout>
   );

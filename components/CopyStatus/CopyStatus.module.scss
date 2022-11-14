@@ -1,7 +1,5 @@
 .copyStatus {
-  font-style: italic;
-
   &[data-copied='true'] {
-    color: blue;
+    color: darkgreen;
   }
 }

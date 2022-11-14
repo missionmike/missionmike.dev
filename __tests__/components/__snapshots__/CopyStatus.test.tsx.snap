@@ -4,6 +4,7 @@ exports[`CopyStatus component renders the component with custom copy text 1`] = 
 <div>
   <span
     class="copyStatus"
+    data-copied="false"
   >
     Click to copy!
   </span>
@@ -14,6 +15,7 @@ exports[`CopyStatus component renders the component with default copy text 1`] =
 <div>
   <span
     class="copyStatus"
+    data-copied="false"
   >
     (click to copy)
   </span>
