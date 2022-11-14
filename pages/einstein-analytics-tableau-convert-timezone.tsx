@@ -105,6 +105,10 @@ const Page = () => {
     setIsDst(parseInt(targetOptions[selectedIndex].getAttribute('data-dst'), 10) === 1);
   };
 
+  const updateCopyStatus = (evt) => {
+    // console.log(evt?.target);
+  };
+
   return (
     <Layout title="Convert Timezone 🌎⏲ in Tableau (formerly Einstein Analytics)" isProse={true}>
       <Row>
@@ -154,15 +158,12 @@ const Page = () => {
           </p>
         </Col>
       </Row>
-      <Row style={{ display: isDst ? 'block' : 'none' }}>
+      <Row style={{ display: isDst && supportDst ? 'block' : 'none' }}>
         <p>
           <em>
-            The timezone you selected supports Daylight Savings Time (DST).
-            {supportDst
-              ? ` For to-the-hour accuracy, select a range of years to support in
-            your final formula. Years outside of this range will not take
-            Daylight Savings Time (DST) into account.`
-              : ` If you would like to account for DST in your final formula, check the box above.`}
+            For accuracy to the hour, select a range of years to support in your final formula.
+            Years outside of this range will <strong>not</strong> take Daylight Savings Time (DST)
+            into account.
           </em>
         </p>
       </Row>
@@ -204,7 +205,7 @@ const Page = () => {
           </a>
           :
         </p>
-        <Container style={{ display: isDst === false || supportDst === false ? 'block' : 'none' }}>
+        <Container style={{ display: !isDst || !supportDst ? 'block' : 'none' }}>
           <Row className="bg-light p-3">
             <p>
               <strong>Name:</strong>{' '}
@@ -213,12 +214,8 @@ const Page = () => {
               </code>
               <br />
               <strong>Type:</strong> Numeric (precision: 17, scale: 0)
-              <br />
-              <CopyStatus />
-              <CopyToClipboard text={dateTimeConvertedVariableFormulaNoDST}>
-                <CodeBlock>{dateTimeConvertedVariableFormulaNoDST}</CodeBlock>
-              </CopyToClipboard>
             </p>
+            <CodeBlock copyOnClick>{dateTimeConvertedVariableFormulaNoDST}</CodeBlock>
           </Row>
         </Container>
         <Container style={{ display: isDst && supportDst ? 'block' : 'none' }}>
@@ -228,12 +225,8 @@ const Page = () => {
               <strong>Name:</strong> <code>{dateTimeEpochVariableName}</code>
               <br />
               <strong>Type:</strong> Numeric (precision: 17, scale: 0)
-              <br />
-              <CopyStatus />
-              <CopyToClipboard text={dateTimeFieldEpochFormula}>
-                <CodeBlock>{dateTimeFieldEpochFormula}</CodeBlock>
-              </CopyToClipboard>
             </p>
+            <CodeBlock copyOnClick>{dateTimeFieldEpochFormula}</CodeBlock>
           </Row>
           <Row className="bg-light mt-4 p-3">
             <h3>Field #2:</h3>
@@ -241,12 +234,8 @@ const Page = () => {
               <strong>Name:</strong> <code>{dateTimeEpochConvertedVariableName}</code>
               <br />
               <strong>Type:</strong> Numeric (precision: 17, scale: 0)
-              <br />
-              <CopyStatus />
-              <CopyToClipboard text={dateTimeEpochConvertedFormula}>
-                <CodeBlock>{dateTimeEpochConvertedFormula}</CodeBlock>
-              </CopyToClipboard>
             </p>
+            <CodeBlock copyOnClick>{dateTimeEpochConvertedFormula}</CodeBlock>
           </Row>
           <Row className="bg-light mt-4 p-3">
             <h3>Field #3:</h3>
@@ -254,12 +243,8 @@ const Page = () => {
               <strong>Name:</strong> <code>{dateTimeConvertedVariableName}</code>
               <br />
               <strong>Type:</strong> Date
-              <br />
-              <CopyStatus />
-              <CopyToClipboard text={dateTimeEpochConvertedFormulaDST}>
-                <CodeBlock>{dateTimeEpochConvertedFormulaDST}</CodeBlock>
-              </CopyToClipboard>
             </p>
+            <CodeBlock copyOnClick>{dateTimeEpochConvertedFormulaDST}</CodeBlock>
           </Row>
         </Container>
       </div>

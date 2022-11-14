@@ -1,0 +1,36 @@
+.codeContainer {
+  position: relative;
+  padding: 0;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.status {
+  opacity: 1;
+  transition: opacity 250ms ease;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 0.8rem;
+  z-index: 1;
+  color: white;
+  background-color: black;
+
+  &[data-copied='true'] {
+    color: aqua;
+    animation: fadeOut 3s ease;
+  }
+}
