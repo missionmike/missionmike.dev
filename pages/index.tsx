@@ -24,10 +24,10 @@ export default function Home({
       <Container className={styles.index}>
         <Row>
           <Col className="w-50">
-            <h1>
-              MissionMike<span className="suffix">.dev</span>
+            <h1 className={styles.h1}>
+              MissionMike<span className={styles.suffix}>.dev</span>
               <br />
-              <span className="subtitle">
+              <span className={styles.subtitle}>
                 I&apos;m a software developer. I also do{' '}
                 {/* eslint-disable-next-line react/jsx-no-target-blank */}
                 <a

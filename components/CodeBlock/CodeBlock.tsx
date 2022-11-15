@@ -30,9 +30,11 @@ const CodeBlock = ({
 
   return (
     <div onClick={clickHandler} className={styles.codeContainer}>
-      <div className={styles.status} data-copied={copied}>
-        {copied ? `Copied!` : <BsClipboard />}
-      </div>
+      {copyOnClick ? (
+        <div className={styles.status} data-copied={copied}>
+          {copied ? `Copied!` : <BsClipboard />}
+        </div>
+      ) : null}
       <pre>
         <code className={`hljs language-${language}`}>{children}</code>
       </pre>

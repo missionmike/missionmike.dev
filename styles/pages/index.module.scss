@@ -1,23 +1,31 @@
+@import 'styles/mixins.scss';
+
 .index {
   padding-top: 4rem;
   padding-bottom: 4rem;
   max-width: 1400px;
   display: flex;
   flex-direction: column;
+}
 
-  :global h1 {
-    letter-spacing: 0.7rem;
+.h1 {
+  letter-spacing: 0.7rem;
 
-    span.suffix {
-      color: #999;
-    }
-
-    span.subtitle {
-      font-size: 1rem;
-      text-transform: none;
-      letter-spacing: normal;
-    }
+  @include media-breakpoint-down(sm) {
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    margin-top: 0;
   }
+}
+
+.suffix {
+  color: #999;
+}
+
+.subtitle {
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .h2 {

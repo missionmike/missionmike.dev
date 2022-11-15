@@ -1,19 +1,10 @@
-import Link from 'next/link';
+import { HeaderNav } from './HeaderNav';
 import styles from './Header.module.scss';
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/about">Bio</Link>
-          </li>
-        </ul>
-      </nav>
+      <HeaderNav />
     </header>
   );
 };

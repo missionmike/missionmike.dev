@@ -1,3 +1,4 @@
+import { CodeBlock } from 'components/CodeBlock/CodeBlock';
 import CodeHeader from './CodeHeader';
 import styles from './MDXComponents.module.scss';
 
@@ -7,6 +8,7 @@ const MDXComponents = {
   h1: (props) => <h1 {...props} className={styles.postTitle} />,
   h2: (props) => <h2 {...props} className={styles.postHeading2} />,
   h3: (props) => <h3 {...props} className={styles.postHeading3} />,
+  code: (props) => <CodeBlock {...props} />,
   CodeHeader: (props) => <CodeHeader {...props} />,
 };
 
