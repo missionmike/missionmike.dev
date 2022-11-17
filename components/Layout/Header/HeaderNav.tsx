@@ -6,6 +6,16 @@ import { useState } from 'react';
 
 const HeaderNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const links = [
+    {
+      href: '/',
+      text: 'Home',
+    },
+    {
+      href: '/about',
+      text: 'Bio',
+    },
+  ];
 
   return (
     <>
@@ -15,12 +25,13 @@ const HeaderNav = () => {
       <div className={styles.headerNavContainer} data-open={isOpen}>
         <nav>
           <ul className={styles.headerNav}>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/about">Bio</Link>
-            </li>
+            {links.map((link, index) => {
+              return (
+                <li key={`menu-item-${index}`} onClick={() => setIsOpen(false)}>
+                  <Link href={link.href}>{link.text}</Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

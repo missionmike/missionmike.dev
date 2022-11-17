@@ -4,8 +4,6 @@
   padding-top: 4rem;
   padding-bottom: 4rem;
   max-width: 1400px;
-  display: flex;
-  flex-direction: column;
 }
 
 .h1 {
@@ -41,13 +39,17 @@
 
 .right {
   padding: 0 0 0 3rem;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0;
+  }
 }
 
 .tagLink {
   display: inline-block;
   padding: 0.25rem 1rem;
   color: white;
-  margin-right: 0.5rem;
+  margin: 0.5rem;
   background-color: #ff73cf;
   cursor: pointer;
   border: 1px solid white;

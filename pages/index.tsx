@@ -22,8 +22,8 @@ export default function Home({
   return (
     <Layout title={'Mission Mike | Developer Musings'}>
       <Container className={styles.index}>
-        <Row>
-          <Col className="w-50">
+        <Row className="flex-row">
+          <Col>
             <h1 className={styles.h1}>
               MissionMike<span className={styles.suffix}>.dev</span>
               <br />
