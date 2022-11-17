@@ -10,9 +10,14 @@
   letter-spacing: 0.7rem;
 
   @include media-breakpoint-down(sm) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: 0.3rem;
     margin-top: 0;
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: 1.5rem;
+    letter-spacing: 0.25rem;
   }
 }
 
@@ -39,6 +44,7 @@
 
 .right {
   padding: 0 0 0 3rem;
+  min-width: 50%;
 
   @include media-breakpoint-down(sm) {
     padding: 0;

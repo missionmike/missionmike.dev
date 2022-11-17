@@ -22,15 +22,17 @@ const TagPage = ({ tag, posts }) => {
             <Row key={`post-preview-${index}`} className={styles.postPreview}>
               {frontMatter?.featuredImage ? (
                 <Col className={styles.featuredImageContainer}>
-                  <Image
-                    src={`/static/images/${frontMatter.featuredImage}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw,
+                  <Link href={href}>
+                    <Image
+                      src={`/static/images/${frontMatter.featuredImage}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-                    alt=""
-                    style={{ objectFit: 'cover' }}
-                  ></Image>
+                      alt=""
+                      style={{ objectFit: 'cover' }}
+                    ></Image>
+                  </Link>
                 </Col>
               ) : null}
               <Col className={styles.postContentPreviewContainer}>

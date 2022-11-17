@@ -22,23 +22,22 @@ export default function Home({
   return (
     <Layout title={'Mission Mike | Developer Musings'}>
       <Container className={styles.index}>
-        <Row className="flex-row">
+        <Row>
           <Col>
             <h1 className={styles.h1}>
               MissionMike<span className={styles.suffix}>.dev</span>
-              <br />
-              <span className={styles.subtitle}>
-                I&apos;m a software developer. I also do{' '}
-                {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                <a
-                  href="https://linktr.ee/missionmike"
-                  target="_blank"
-                  style={{ textDecoration: 'none' }}
-                >
-                  some other things.
-                </a>
-              </span>
             </h1>
+            <span className={styles.subtitle}>
+              I&apos;m a software developer. I also do{' '}
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a
+                href="https://linktr.ee/missionmike"
+                target="_blank"
+                style={{ textDecoration: 'none' }}
+              >
+                some other things.
+              </a>
+            </span>
             <SocialBar />
             <CarouselHome />
           </Col>

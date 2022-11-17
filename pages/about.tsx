@@ -7,6 +7,7 @@ import fs from 'fs';
 import { getAllFiles } from 'helpers/files';
 import matter from 'gray-matter';
 import path from 'path';
+import styles from 'styles/pages/about.module.scss';
 
 export default function Page() {
   return (
@@ -20,7 +21,7 @@ export default function Page() {
             width={300}
             height={300}
             alt="Headshot Photograph of Michael Dinerstein"
-            style={{ float: 'right', margin: '0 0 1rem 2rem' }}
+            className={`rounded ${styles.profileImg}`}
           ></Image>
           Growing up, Michael Dinerstein was one of those kids who would take things apart and put
           them back together just to see how they “ticked.” Understanding the basics was never

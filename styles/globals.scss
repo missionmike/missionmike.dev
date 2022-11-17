@@ -3,6 +3,7 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'variables';
 @import 'social';
+@import 'blog';
 
 * {
   box-sizing: border-box;
@@ -58,4 +59,9 @@ p,
   font-size: 1rem;
   line-height: 1.7rem;
   color: #333;
+}
+
+iframe.w-full.relative {
+  max-width: 100%;
+  margin: 1rem 0;
 }

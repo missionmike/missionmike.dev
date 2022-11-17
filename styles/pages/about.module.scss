@@ -1,0 +1,12 @@
+@import 'styles/mixins';
+
+.profileImg {
+  float: right;
+  margin: 0 0 1rem 1rem;
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    height: auto;
+    margin: 0 0 1rem 0;
+  }
+}

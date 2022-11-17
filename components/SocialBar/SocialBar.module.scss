@@ -1,6 +1,12 @@
+@import 'styles/mixins.scss';
+
 .socialBar {
   margin: 2rem 0;
   display: flex;
   flex-direction: row;
   gap: 0.8rem;
+
+  @include media-breakpoint-down(sm) {
+    justify-content: space-between;
+  }
 }
