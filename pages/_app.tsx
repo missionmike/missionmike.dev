@@ -2,12 +2,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/globals.scss';
 
+import Head from 'next/head';
 import { MDXComponents } from 'components/MDXComponents/MDXComponents';
 import { MDXProvider } from '@mdx-js/react';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <MDXProvider components={MDXComponents}>
         <Component {...pageProps} />
       </MDXProvider>
