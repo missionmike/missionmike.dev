@@ -137,7 +137,7 @@ export default function Home({
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col lg>
             <div className={styles.imageFrame}>
               <ImageWrapper>
                 <Image
@@ -153,9 +153,7 @@ export default function Home({
               </p>
             </div>
           </Col>
-        </Row>
-        <Row>
-          <Col>
+          <Col lg>
             <div className={styles.imageFrame}>
               <ImageWrapper>
                 <Image
@@ -168,6 +166,7 @@ export default function Home({
               <p className="text-center">
                 My family is my <span style={{ color: 'red' }}>❤️</span>... Everything I do, I do
                 for them. Their wellbeing is my mission.
+                <br /> <br />
               </p>
             </div>
           </Col>
@@ -177,7 +176,9 @@ export default function Home({
             <Container className={styles.quoteContainer}>
               <span className={`${styles.h2} d-flex justify-content-center align-items-center`}>
                 <span>Quote of the Day</span>
-                <span className="display-4">💬</span>
+                <span className="display-4" style={{ paddingLeft: '1rem' }}>
+                  💬
+                </span>
               </span>
               <blockquote>
                 <p>
