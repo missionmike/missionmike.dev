@@ -12,6 +12,10 @@ const HeaderNav = () => {
       text: 'Home',
     },
     {
+      href: '/blog',
+      text: 'Blog',
+    },
+    {
       href: '/about',
       text: 'Bio',
     },

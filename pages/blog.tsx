@@ -9,12 +9,12 @@ import matter from 'gray-matter';
 import path from 'path';
 import styles from 'styles/pages/blog.module.scss';
 
-const TagPage = ({ tag, posts }) => {
+const BlogPage = ({ posts }) => {
   return (
     <Layout>
-      <Container>
+      <Container style={{ marginTop: 100 }}>
         <h1 className={styles.h1}>
-          <span className="lightgray font-weight-normal">Tag:</span> {tag}
+          <span className="lightgray font-weight-normal">Blog</span>
         </h1>
         {posts.map((post, index) => {
           const { frontMatter, href } = post;
@@ -53,48 +53,23 @@ const TagPage = ({ tag, posts }) => {
   );
 };
 
-export default TagPage;
+export default BlogPage;
 
-export const getStaticPaths = async () => {
-  const tags = getAllFiles('posts', [])
-    .map((file) => {
-      const markdownWithMeta = fs.readFileSync(path.join(file), 'utf-8');
-      const { data: frontMatter } = matter(markdownWithMeta);
-      if (frontMatter?.tags && Array.isArray(frontMatter.tags)) {
-        return frontMatter.tags;
-      }
-    })
-    .filter((tag) => tag !== undefined)
-    .flat();
-
-  const paths = [...new Set(tags)].map((tag) => {
-    return { params: { tag } };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async ({ params: { tag } }) => {
-  const tagName = tag;
+export const getStaticProps = async () => {
   const postsWithTag = getAllFiles('posts', [])
     .map((file) => {
       const markdownWithMeta = fs.readFileSync(path.join(file), 'utf-8');
       const { data: frontMatter } = matter(markdownWithMeta);
-      if (frontMatter?.tags && Array.isArray(frontMatter.tags) && frontMatter.tags.includes(tag)) {
-        return {
-          href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
-          frontMatter,
-        };
-      }
+
+      return {
+        href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+        frontMatter,
+      };
     })
     .filter((obj) => obj !== undefined);
 
   return {
     props: {
-      tag: tagName,
       posts: postsWithTag,
     },
   };
