@@ -10,7 +10,7 @@ exports[`SocialBar component renders the component 1`] = `
       href="https://www.youtube.com/channel/UC3m6NxN3ZhCpYkL4LM8gHMg"
       rel="noopener noreferrer"
       target="_blank"
-      title="Open YouTube"
+      title="Subscribe to Sleepy Slawths on YouTube"
     >
       <svg
         class="svg"
@@ -31,7 +31,7 @@ exports[`SocialBar component renders the component 1`] = `
       href="https://www.linkedin.com/in/michaeldinerstein"
       rel="noopener noreferrer"
       target="_blank"
-      title="Connect on LinkedIn"
+      title="Connect with Michael on LinkedIn"
     >
       <svg
         class="svg"
@@ -73,7 +73,7 @@ exports[`SocialBar component renders the component 1`] = `
       href="https://facebook.com/missionmike.dev"
       rel="noopener noreferrer"
       target="_blank"
-      title="Follow Mission Mike on Twitter"
+      title="Follow Mission Mike on Facebook"
     >
       <svg
         class="svg"
@@ -250,6 +250,27 @@ exports[`SocialBar component renders the component 1`] = `
         />
       </svg>
        
+    </a>
+    <a
+      class="icon"
+      href="https://www.tiktok.com/@missionmike"
+      rel="noopener noreferrer"
+      target="_blank"
+      title="Follow Mission Mike on TikTok"
+    >
+      <svg
+        clip-rule="evenodd"
+        fill-rule="evenodd"
+        image-rendering="optimizeQuality"
+        shape-rendering="geometricPrecision"
+        text-rendering="geometricPrecision"
+        viewBox="0 0 3333 3333"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3021 0H313C141 0 0 141 0 312v2708c0 172 141 312 313 312h2708c172 0 313-141 313-312V312c0-172-141-312-313-312zm-946 623c35 296 200 473 487 492v333c-167 16-313-38-483-141v623c0 792-863 1040-1210 472-223-365-87-1006 629-1032v352c-54 9-113 23-166 40-159 54-249 155-224 332 48 341 674 441 621-225V622h345z"
+        />
+      </svg>
     </a>
   </div>
 </div>

@@ -17,6 +17,7 @@ const siteMetadata = {
   youTube: 'https://www.youtube.com/channel/UC3m6NxN3ZhCpYkL4LM8gHMg',
   linkedIn: 'https://www.linkedin.com/in/michaeldinerstein',
   instagram: 'https://www.instagram.com/missionmike.dev',
+  tikTok: 'https://www.tiktok.com/@missionmike',
 };
 
 export { siteMetadata };

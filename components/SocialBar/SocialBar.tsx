@@ -2,6 +2,7 @@ import { IconFacebook } from './icons/IconFacebook';
 import { IconGitHub } from './icons/IconGitHub';
 import { IconInstagram } from './icons/IconInstagram';
 import { IconLinkedIn } from './icons/IconLinkedIn';
+import { IconTikTok } from './icons/IconTikTok';
 import { IconTwitter } from './icons/IconTwitter';
 import { IconYouTube } from './icons/IconYouTube';
 import React from 'react';
@@ -23,6 +24,7 @@ const SocialBar = () => {
       <IconFacebook url={siteMetadata.facebook} />
       <IconGitHub url={siteMetadata.gitHub} />
       <IconInstagram url={siteMetadata.instagram} />
+      <IconTikTok url={siteMetadata.tikTok} />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import { BlogPreview } from 'components/blog/BlogPreview/BlogPreview';
 import { CarouselHome } from 'components/pages/home/CarouselHome/CarouselHome';
+import Image from 'next/image';
 import { Layout } from 'components/Layout/Layout';
 import Link from 'next/link';
 import { Post } from 'types/post';
@@ -11,6 +12,10 @@ import { getAllFiles } from 'helpers/files';
 import matter from 'gray-matter';
 import path from 'path';
 import styles from 'styles/pages/index.module.scss';
+
+const ImageWrapper = ({ children }) => {
+  return <div style={{ position: 'relative', minHeight: 500 }}>{children}</div>;
+};
 
 export default function Home({
   latestPost = {},
@@ -39,9 +44,38 @@ export default function Home({
               </a>
             </span>
             <SocialBar />
-            <CarouselHome />
+            <div className={styles.imageFrame}>
+              <ImageWrapper>
+                <Image
+                  src="/static/images/family-gaming.jpg"
+                  alt="Photo of Mission Mike playing videogames with his three children. Sitting at a computer desk with a green screen behind them."
+                  style={{ objectFit: 'cover' }}
+                  fill
+                />
+              </ImageWrapper>
+              <p>
+                Playing video games with my kids and recording our gameplay together is my fav!!
+                Check out our YouTube channels{' '}
+                <a
+                  href="https://www.youtube.com/@MikeyNDaddy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Mikey &amp; Daddy
+                </a>{' '}
+                and{' '}
+                <a
+                  href="https://www.youtube.com/@sleepyslawths"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Sleepy Slawths
+                </a>
+                .
+              </p>
+            </div>
           </Col>
-          <Col className={styles.right}>
+          <Col className="d-flex flex-column justify-content-center">
             <Container>
               <span className={styles.h2}>Latest attempt at writing:</span>
               <BlogPreview post={latestPost} />
@@ -59,6 +93,116 @@ export default function Home({
             </Container>
           </Col>
         </Row>
+        <Row>
+          <Col className="d-flex flex-column justify-content-center">
+            <Container className="w-50 pt-5 pb-5">
+              <span className={`${styles.h2} d-flex justify-content-center`}>
+                <span className="display-4">🍕</span> <span className="pt-4">Food for Thought</span>
+              </span>
+              <blockquote>
+                <p>
+                  <em>
+                    THE BOY SCOUTS HAVE A RULE: “Always leave the campground cleaner than you found
+                    it.” If you find a mess on the ground, you clean it up regardless of who might
+                    have made it. You intentionally improve the environment for the next group of
+                    campers.
+                  </em>
+                </p>
+                <p>
+                  <em>
+                    ... What if we followed a similar rule in our code: “Always check a module in
+                    cleaner than when you checked it out”? Regardless of who the original author
+                    was, what if we always made some effort, no matter how small, to improve the
+                    module? What would be the result?
+                  </em>
+                </p>
+                <p>
+                  <em>
+                    I think if we all followed that simple rule, we would see the end of the
+                    relentless deterioration of our software systems. Instead, our systems would
+                    gradually get better and better as they evolved. We would also see teams caring
+                    for the system as a whole, rather than just individuals caring for their own
+                    small part.
+                  </em>
+                </p>
+                <p style={{ textAlign: 'right' }}>
+                  &mdash; Robert C. Martin (Uncle Bob),
+                  <br />
+                  <a
+                    href="https://www.oreilly.com/library/view/97-things-every/9780596809515/ch08.html"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    97 Things Every Programmer Should Know
+                  </a>
+                </p>
+              </blockquote>
+            </Container>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className={styles.imageFrame}>
+              <ImageWrapper>
+                <Image
+                  src="/static/images/family-breakfast.jpg"
+                  alt="Mike eating breakfast with his wife Yohana and their children."
+                  style={{ objectFit: 'cover' }}
+                  fill
+                />
+              </ImageWrapper>
+              <p className="text-center">
+                My family is my ❤️... Everything I do, I do for them. Their wellbeing is my mission.
+              </p>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="d-flex flex-column justify-content-center p-5">
+            <Container className="w-50 pt-5 pb-5">
+              <span className={`${styles.h2} d-flex`}>
+                <span className="p-4">Quote of the Day</span> <span className="display-4">💬</span>
+              </span>
+              <blockquote>
+                <p>
+                  <em>
+                    &quot;What&apos;s the difference between regular parsley and Italian parsley?
+                    Does Italian parsley have an accent or something?&quot;
+                  </em>
+                </p>
+                <p style={{ textAlign: 'right' }}>
+                  &mdash;
+                  <a
+                    href="https://www.youtube.com/channel/UCifuv8WtP23D0I_RHmj-wrA"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  ></a>{' '}
+                  Mikey, age 9.
+                </p>
+              </blockquote>
+            </Container>
+          </Col>
+        </Row>
+        {/* <Row>
+          <Col>
+            <Container className="w-50 pt-5 pb-5">
+              <div className={styles.imageFrame}>
+                <ImageWrapper>
+                  <Image
+                    src="/static/images/office-dogs.jpg"
+                    alt="Photo of Mission Mike and his two office dogs, Maximus and Magnus lying on the floor in front of the desk."
+                    style={{ objectFit: 'cover' }}
+                    fill
+                  />
+                </ImageWrapper>
+                <p>
+                  I spend the workday coding with my trusty office doggos, Maximus (left) and
+                  Magnus. Sometimes I fear their snoring can be overheard during Zoom meetings.
+                </p>
+              </div>
+            </Container>
+          </Col>
+        </Row> */}
       </Container>
     </Layout>
   );

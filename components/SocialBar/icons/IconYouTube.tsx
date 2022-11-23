@@ -14,7 +14,7 @@ const IconYouTube = ({ url }: { url: string }) => {
       target="_blank"
       className={styles.icon}
       rel="noopener noreferrer"
-      title="Open YouTube"
+      title="Subscribe to Sleepy Slawths on YouTube"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -42,12 +42,11 @@
   margin-bottom: 2rem;
 }
 
-.right {
-  padding: 0 0 0 3rem;
-  min-width: 50%;
-
-  @include media-breakpoint-down(sm) {
-    padding: 0;
+.imageFrame {
+  :global p {
+    padding: 1rem;
+    margin-top: 0;
+    background-color: #eee;
   }
 }
 

@@ -14,7 +14,7 @@ const IconLinkedIn = ({ url }: { url: string }) => {
       target="_blank"
       rel="noopener noreferrer"
       className={styles.icon}
-      title="Connect on LinkedIn"
+      title="Connect with Michael on LinkedIn"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

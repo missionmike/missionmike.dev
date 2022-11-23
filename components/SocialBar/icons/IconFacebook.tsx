@@ -14,7 +14,7 @@ const IconFacebook = ({ url }: { url: string }) => {
       target="_blank"
       rel="noopener noreferrer"
       className={styles.icon}
-      title="Follow Mission Mike on Twitter"
+      title="Follow Mission Mike on Facebook"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
