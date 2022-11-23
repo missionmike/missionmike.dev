@@ -1,0 +1,10 @@
+@import 'styles/mixins';
+
+.imageWrapper {
+  position: relative;
+  min-height: 500px;
+
+  @include media-breakpoint-down(sm) {
+    min-height: 300px;
+  }
+}

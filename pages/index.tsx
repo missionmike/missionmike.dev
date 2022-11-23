@@ -1,8 +1,8 @@
 import { Col, Container, Row } from 'react-bootstrap';
 
 import { BlogPreview } from 'components/blog/BlogPreview/BlogPreview';
-import { CarouselHome } from 'components/pages/home/CarouselHome/CarouselHome';
 import Image from 'next/image';
+import { ImageWrapper } from 'components/blog/ImageWrapper/ImageWrapper';
 import { Layout } from 'components/Layout/Layout';
 import Link from 'next/link';
 import { Post } from 'types/post';
@@ -12,10 +12,6 @@ import { getAllFiles } from 'helpers/files';
 import matter from 'gray-matter';
 import path from 'path';
 import styles from 'styles/pages/index.module.scss';
-
-const ImageWrapper = ({ children }) => {
-  return <div style={{ position: 'relative', minHeight: 500 }}>{children}</div>;
-};
 
 export default function Home({
   latestPost = {},
@@ -75,7 +71,7 @@ export default function Home({
               </p>
             </div>
           </Col>
-          <Col className="d-flex flex-column justify-content-center">
+          <Col lg className="d-flex flex-column justify-content-center">
             <Container>
               <span className={styles.h2}>Latest attempt at writing:</span>
               <BlogPreview post={latestPost} />
@@ -95,9 +91,9 @@ export default function Home({
         </Row>
         <Row>
           <Col className="d-flex flex-column justify-content-center">
-            <Container className="w-50 pt-5 pb-5">
-              <span className={`${styles.h2} d-flex justify-content-center`}>
-                <span className="display-4">🍕</span> <span className="pt-4">Food for Thought</span>
+            <Container className={styles.quoteContainer}>
+              <span className={`${styles.h2} d-flex justify-content-center align-items-center`}>
+                <span className="display-4">🍕</span> <span>Food for Thought</span>
               </span>
               <blockquote>
                 <p>
@@ -145,6 +141,24 @@ export default function Home({
             <div className={styles.imageFrame}>
               <ImageWrapper>
                 <Image
+                  src="/static/images/office-dogs.jpg"
+                  alt="Photo of Mission Mike and his two office dogs, Maximus and Magnus lying on the floor in front of the desk."
+                  style={{ objectFit: 'cover' }}
+                  fill
+                />
+              </ImageWrapper>
+              <p>
+                I spend the workday coding with my trusty office doggos, Maximus (left) and Magnus.
+                Sometimes I fear their snoring can be overheard during Zoom meetings.
+              </p>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className={styles.imageFrame}>
+              <ImageWrapper>
+                <Image
                   src="/static/images/family-breakfast.jpg"
                   alt="Mike eating breakfast with his wife Yohana and their children."
                   style={{ objectFit: 'cover' }}
@@ -152,16 +166,18 @@ export default function Home({
                 />
               </ImageWrapper>
               <p className="text-center">
-                My family is my ❤️... Everything I do, I do for them. Their wellbeing is my mission.
+                My family is my <span style={{ color: 'red' }}>❤️</span>... Everything I do, I do
+                for them. Their wellbeing is my mission.
               </p>
             </div>
           </Col>
         </Row>
         <Row>
           <Col className="d-flex flex-column justify-content-center p-5">
-            <Container className="w-50 pt-5 pb-5">
-              <span className={`${styles.h2} d-flex`}>
-                <span className="p-4">Quote of the Day</span> <span className="display-4">💬</span>
+            <Container className={styles.quoteContainer}>
+              <span className={`${styles.h2} d-flex justify-content-center align-items-center`}>
+                <span>Quote of the Day</span>
+                <span className="display-4">💬</span>
               </span>
               <blockquote>
                 <p>
@@ -183,26 +199,6 @@ export default function Home({
             </Container>
           </Col>
         </Row>
-        {/* <Row>
-          <Col>
-            <Container className="w-50 pt-5 pb-5">
-              <div className={styles.imageFrame}>
-                <ImageWrapper>
-                  <Image
-                    src="/static/images/office-dogs.jpg"
-                    alt="Photo of Mission Mike and his two office dogs, Maximus and Magnus lying on the floor in front of the desk."
-                    style={{ objectFit: 'cover' }}
-                    fill
-                  />
-                </ImageWrapper>
-                <p>
-                  I spend the workday coding with my trusty office doggos, Maximus (left) and
-                  Magnus. Sometimes I fear their snoring can be overheard during Zoom meetings.
-                </p>
-              </div>
-            </Container>
-          </Col>
-        </Row> */}
       </Container>
     </Layout>
   );
