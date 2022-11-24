@@ -1,1 +1,1 @@
-export type PageSEO = 'common' | 'blog' | 'tag';
+export type PageSEODef = 'common' | 'blog' | 'tag';

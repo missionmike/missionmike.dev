@@ -21,7 +21,12 @@ export default function Home({
   tags?: string[];
 }) {
   return (
-    <Layout title={'Mission Mike | Developer Musings'}>
+    <Layout
+      pageSEO="common"
+      title={'Mission Mike | Developer Musings'}
+      description={`Michael Dinerstein is a software developer and 
+        graphic artist residing in the Pacific Northwest.`}
+    >
       <Container className={styles.index}>
         <Row>
           <Col>

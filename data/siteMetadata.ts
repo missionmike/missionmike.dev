@@ -9,7 +9,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/missionmike/missionmike.dev',
   siteLogo: '/static/images/missionmike-profile.jpeg',
   image: '/static/images/missionmike-profile.jpeg',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/family-gaming.png',
   email: 'holler@missionmike.dev',
   gitHub: 'https://github.com/missionmike',
   twitter: 'https://twitter.com/missionmikedev',

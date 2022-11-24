@@ -1,8 +1,9 @@
-import { CommonSEO } from './Header/SEO';
+import { CommonSEO, PageSEO, TagSEO } from './Header/SEO';
+
 import { Container } from 'react-bootstrap';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
-import { PageSEO } from 'types/page';
+import { PageSEODef } from 'types/page';
 import React from 'react';
 import { siteMetadata } from 'data/siteMetadata';
 import styles from './Layout.module.scss';
@@ -10,6 +11,7 @@ import styles from './Layout.module.scss';
 const Layout = ({
   title = siteMetadata.title,
   description = siteMetadata.description,
+  ogImage = '',
   className = '',
   pageSEO = 'common',
   isProse = false,
@@ -17,8 +19,9 @@ const Layout = ({
 }: {
   title?: string;
   description?: string;
+  ogImage?: string;
   className?: string;
-  pageSEO?: PageSEO;
+  pageSEO?: PageSEODef;
   isProse?: boolean;
   children?: React.ReactElement | React.ReactElement[];
 }) => {
@@ -28,7 +31,9 @@ const Layout = ({
       <Container as="main" className={`${className} ${styles.layout} ${isProse ? 'prose' : ''}`}>
         {
           {
-            common: <CommonSEO title={title} description={description} />,
+            common: <CommonSEO title={title} description={description} ogImage={ogImage} />,
+            page: <PageSEO title={title} description={description} />,
+            tag: <TagSEO title={title} description={description} />,
           }[pageSEO]
         }
         <div className={isProse ? 'prose' : ''}>{children}</div>
