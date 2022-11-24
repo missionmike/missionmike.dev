@@ -23,7 +23,7 @@ export default function Home({
   return (
     <Layout
       pageSEO="common"
-      title={'Mission Mike | Developer Musings'}
+      title={'Mission Mike | Developer Log'}
       description={`Michael Dinerstein is a software developer and 
         graphic artist residing in the Pacific Northwest.`}
     >
