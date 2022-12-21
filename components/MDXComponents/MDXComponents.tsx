@@ -8,8 +8,8 @@ const MDXComponents = {
   h1: (props) => <h1 {...props} className={styles.postTitle} />,
   h2: (props) => <h2 {...props} className={styles.postHeading2} />,
   h3: (props) => <h3 {...props} className={styles.postHeading3} />,
-  code: (props) => <CodeBlock {...props} />,
   CodeHeader: (props) => <CodeHeader {...props} />,
+  CodeBlock: (props) => <CodeBlock {...props} />,
 };
 
 export { MDXComponents };

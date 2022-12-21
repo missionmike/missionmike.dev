@@ -97,15 +97,13 @@ params are set, it uses default dimensions, play button image, etc).
 
 Example from .htaccess:
 
-```
-ErrorDocument 404 /video-placeholder-generator/generator.php
-```
+<CodeHeader>.htaccess</CodeHeader>
+<CodeBlock>ErrorDocument 404 /video-placeholder-generator/generator.php</CodeBlock>
 
 Example from nginx.conf:
 
-```
-error_page 404 = /video-placeholder-generator/generator
-```
+<CodeHeader>nginx.conf</CodeHeader>
+<CodeBlock>error_page 404 = /video-placeholder-generator/generator</CodeBlock>
 
 Finally, the `generator.php` script does two things:
 
