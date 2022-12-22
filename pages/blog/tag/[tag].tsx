@@ -21,7 +21,7 @@ const TagPage = ({ tag, posts }) => {
         {posts.map((post, index) => {
           return (
             <Row key={`post-preview-${index}`} className={styles.postPreview}>
-              <FeaturedImage post={post} />
+              <FeaturedImage post={post} priority={index <= 1} />
               <Col className={styles.postContentPreviewContainer}>
                 <BlogPreview key={index} post={post} />
               </Col>
@@ -64,12 +64,17 @@ export const getStaticProps = async ({ params: { tag } }) => {
       const { data: frontMatter } = matter(markdownWithMeta);
 
       if (frontMatter?.tags && Array.isArray(frontMatter.tags) && frontMatter.tags.includes(tag)) {
-        return {
-          content: markdownWithMeta,
-          href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
-          path: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
-          frontMatter,
-        };
+        if (
+          frontMatter?.draft !== true ||
+          (frontMatter?.draft === true && process.env.NODE_ENV !== 'production')
+        ) {
+          return {
+            content: markdownWithMeta,
+            href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+            path: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+            frontMatter,
+          };
+        }
       }
     })
     .filter((obj) => obj !== undefined);

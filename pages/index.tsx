@@ -221,11 +221,14 @@ export const getStaticProps = async () => {
     if (!file.includes('posts')) return;
 
     const blogPostPath = path.join('posts', file.split('posts')[1]);
+
     const markdownWithMeta = fs.readFileSync(blogPostPath, 'utf-8');
 
     if (!markdownWithMeta) return;
 
     const { data: frontMatter } = matter(markdownWithMeta);
+
+    if (frontMatter?.draft === true) return;
 
     if (frontMatter?.tags) tags.push(frontMatter.tags);
 
