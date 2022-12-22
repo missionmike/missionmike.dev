@@ -39,12 +39,17 @@ export const getStaticProps = async () => {
       const markdownWithMeta = fs.readFileSync(path.join(file), 'utf-8');
       const { data: frontMatter } = matter(markdownWithMeta);
 
-      return {
-        content: markdownWithMeta,
-        href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
-        path: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
-        frontMatter,
-      };
+      if (
+        frontMatter?.draft !== true ||
+        (frontMatter?.draft === true && process.env.NODE_ENV !== 'production')
+      ) {
+        return {
+          content: markdownWithMeta,
+          href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+          path: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+          frontMatter,
+        };
+      }
     })
     .filter((obj) => obj !== undefined);
 

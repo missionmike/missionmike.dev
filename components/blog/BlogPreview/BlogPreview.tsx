@@ -9,7 +9,7 @@ const BlogPreview = ({ post = {} }: { post: Post }) => {
   if (!post?.content || !post?.path) return;
 
   const { data: frontMatter, content } = matter(post.content);
-  const summary = frontMatter?.summarys
+  const summary = frontMatter?.summary
     ? frontMatter.summary
     : removeMd(content.split(' ').slice(0, 50).join(' ').substring(0, 500));
   const briefTitle =
