@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeaturedImage component renders the component 1`] = `
+<div>
+  <div
+    class="featuredImageContainer col"
+  >
+    <img
+      alt=""
+      data-nimg="fill"
+      decoding="async"
+      loading="lazy"
+      sizes="(max-width: 768px) 100vw,
+(max-width: 1200px) 50vw,
+33vw"
+      src="/_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=3840&q=75"
+      srcset="/_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=256&q=75 256w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=384&q=75 384w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=640&q=75 640w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=750&q=75 750w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=828&q=75 828w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=1080&q=75 1080w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=1200&q=75 1200w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=1920&q=75 1920w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=2048&q=75 2048w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=3840&q=75 3840w"
+      style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; object-fit: cover; color: transparent;"
+    />
+  </div>
+</div>
+`;
+
+exports[`FeaturedImage component renders the component with priority 1`] = `
+<div>
+  <div
+    class="featuredImageContainer col"
+  >
+    <img
+      alt=""
+      data-nimg="fill"
+      decoding="async"
+      sizes="(max-width: 768px) 100vw,
+(max-width: 1200px) 50vw,
+33vw"
+      src="/_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=3840&q=75"
+      srcset="/_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=256&q=75 256w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=384&q=75 384w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=640&q=75 640w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=750&q=75 750w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=828&q=75 828w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=1080&q=75 1080w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=1200&q=75 1200w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=1920&q=75 1920w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=2048&q=75 2048w, /_next/image?url=%2Fstatic%2Fimages%2Fjavascript%3A%3B&w=3840&q=75 3840w"
+      style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; object-fit: cover; color: transparent;"
+    />
+  </div>
+</div>
+`;

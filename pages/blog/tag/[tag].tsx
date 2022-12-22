@@ -1,5 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 
+import { BlogPreview } from 'components/blog/BlogPreview/BlogPreview';
+import { FeaturedImage } from 'components/blog/FeaturedImage/FeaturedImage';
 import Image from 'next/image';
 import { Layout } from 'components/Layout/Layout';
 import Link from 'next/link';
@@ -17,33 +19,11 @@ const TagPage = ({ tag, posts }) => {
           <span className="lightgray font-weight-normal">Tag:</span> {tag}
         </h1>
         {posts.map((post, index) => {
-          const { frontMatter, href } = post;
           return (
             <Row key={`post-preview-${index}`} className={styles.postPreview}>
-              {frontMatter?.featuredImage ? (
-                <Col className={styles.featuredImageContainer}>
-                  <Link href={href}>
-                    <Image
-                      src={`/static/images/${frontMatter.featuredImage}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-                      alt=""
-                      style={{ objectFit: 'cover' }}
-                    ></Image>
-                  </Link>
-                </Col>
-              ) : null}
+              <FeaturedImage post={post} />
               <Col className={styles.postContentPreviewContainer}>
-                <Link href={href}>
-                  <h2>{frontMatter.title}</h2>
-                </Link>
-                <div>
-                  <p>
-                    {frontMatter.summary} [<Link href={href}>read more</Link>]
-                  </p>
-                </div>
+                <BlogPreview key={index} post={post} />
               </Col>
             </Row>
           );
@@ -78,14 +58,16 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { tag } }) => {
-  const tagName = tag;
   const postsWithTag = getAllFiles('posts', [])
     .map((file) => {
       const markdownWithMeta = fs.readFileSync(path.join(file), 'utf-8');
       const { data: frontMatter } = matter(markdownWithMeta);
+
       if (frontMatter?.tags && Array.isArray(frontMatter.tags) && frontMatter.tags.includes(tag)) {
         return {
+          content: markdownWithMeta,
           href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+          path: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
           frontMatter,
         };
       }
@@ -94,7 +76,7 @@ export const getStaticProps = async ({ params: { tag } }) => {
 
   return {
     props: {
-      tag: tagName,
+      tag,
       posts: postsWithTag,
     },
   };

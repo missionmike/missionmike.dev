@@ -12,18 +12,6 @@
   }
 }
 
-.featuredImageContainer {
-  position: relative;
-  overflow: hidden;
-  width: 50%;
-
-  @include media-breakpoint-down(lg) {
-    width: calc(100% - 2rem);
-    margin: 0 auto;
-    min-height: 200px;
-  }
-}
-
 .postContentPreviewContainer {
   padding: 1rem 2rem;
 

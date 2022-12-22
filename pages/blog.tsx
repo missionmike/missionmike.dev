@@ -1,8 +1,8 @@
 import { Col, Container, Row } from 'react-bootstrap';
 
-import Image from 'next/image';
+import { BlogPreview } from 'components/blog/BlogPreview/BlogPreview';
+import { FeaturedImage } from 'components/blog/FeaturedImage/FeaturedImage';
 import { Layout } from 'components/Layout/Layout';
-import Link from 'next/link';
 import fs from 'fs';
 import { getAllFiles } from 'helpers/files';
 import matter from 'gray-matter';
@@ -17,33 +17,11 @@ const BlogPage = ({ posts }) => {
           <span className="lightgray font-weight-normal">Blog</span>
         </h1>
         {posts.map((post, index) => {
-          const { frontMatter, href } = post;
           return (
             <Row key={`post-preview-${index}`} className={styles.postPreview}>
-              {frontMatter?.featuredImage ? (
-                <Col className={styles.featuredImageContainer}>
-                  <Link href={href}>
-                    <Image
-                      src={`/static/images/${frontMatter.featuredImage}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-                      alt=""
-                      style={{ objectFit: 'cover' }}
-                    ></Image>
-                  </Link>
-                </Col>
-              ) : null}
+              <FeaturedImage post={post} />
               <Col className={styles.postContentPreviewContainer}>
-                <Link href={href}>
-                  <h2>{frontMatter.title}</h2>
-                </Link>
-                <div>
-                  <p>
-                    {frontMatter.summary} [<Link href={href}>read more</Link>]
-                  </p>
-                </div>
+                <BlogPreview key={index} post={post} />
               </Col>
             </Row>
           );
@@ -62,7 +40,9 @@ export const getStaticProps = async () => {
       const { data: frontMatter } = matter(markdownWithMeta);
 
       return {
+        content: markdownWithMeta,
         href: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
+        path: file.replace('posts/', '/blog/').replaceAll('.mdx', ''),
         frontMatter,
       };
     })

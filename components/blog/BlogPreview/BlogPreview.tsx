@@ -14,12 +14,24 @@ const BlogPreview = ({ post = {} }: { post: Post }) => {
     : removeMd(content.split(' ').slice(0, 50).join(' ').substring(0, 500));
   const briefTitle =
     frontMatter.title.length > 50 ? `${frontMatter.title.substring(0, 50)}...` : frontMatter.title;
+  const writtenDate = frontMatter?.date ? frontMatter.date : null;
 
   return (
     <div className={styles.previewContainer}>
       <h2 className={styles.previewTitle} title={frontMatter.title}>
         {briefTitle}
       </h2>
+      {writtenDate ? (
+        <span className={styles.writtenDate}>
+          Updated:{' '}
+          {new Date(writtenDate).toLocaleDateString('en-us', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
+        </span>
+      ) : null}
       <p>
         {parse(summary)} [...] <Link href={post.path}>Read More.</Link>
       </p>
