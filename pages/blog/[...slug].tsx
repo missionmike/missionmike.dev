@@ -54,6 +54,12 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const markdownWithMeta = fs.readFileSync(path.join('posts', slugStr + '.mdx'), 'utf-8');
   const { data: frontMatter, content } = matter(markdownWithMeta);
 
+  if (frontMatter?.draft === true && process.env.NODE_ENV === 'production') {
+    return {
+      notFound: true,
+    };
+  }
+
   const mdxSource = await serialize(content, {
     mdxOptions: { rehypePlugins: [rehypeHighlight] },
   });
