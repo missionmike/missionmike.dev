@@ -23,6 +23,7 @@ const config = {
   },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'tsx', 'md', 'mdx'],
+  images: { formats: ['image/webp'] },
 };
 
 export default config;
