@@ -19,7 +19,7 @@ const BlogPreview = ({ post = {} }: { post: Post }) => {
   return (
     <div className={styles.previewContainer}>
       <h2 className={styles.previewTitle} title={frontMatter.title}>
-        {briefTitle}
+        <Link href={post.path}>{briefTitle}</Link>
       </h2>
       {writtenDate ? (
         <span className={styles.writtenDate}>
