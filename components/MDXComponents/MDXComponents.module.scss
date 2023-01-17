@@ -11,27 +11,26 @@
   font-size: 2rem;
 }
 
-.postHeading2 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.postHeading3 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
+.postHeading2,
+.postHeading3,
 .postHeading4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
-  text-transform: uppercase;
   font-weight: bold;
+  text-transform: uppercase;
+}
+
+.postHeading2 {
+  margin-top: 2rem;
+}
+
+.postHeading3 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.postHeading4 {
+  font-size: 1.1rem;
 }
 
 .aside {
@@ -44,4 +43,10 @@
   border-bottom: 1px solid gray;
   border-top: 1px solid pink;
   margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  h3,
+  h2 {
+    margin-top: 1rem;
+  }
 }
