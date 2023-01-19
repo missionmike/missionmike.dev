@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Layout } from 'components/Layout/Layout';
 import { MDXComponents } from 'components/MDXComponents/MDXComponents';
 import { MDXRemote } from 'next-mdx-remote';
@@ -7,10 +8,24 @@ import path from 'path';
 import rehypeHighlight from 'rehype-highlight';
 import { serialize } from 'next-mdx-remote/serialize';
 
-const PostPage = ({ frontMatter: { title }, mdxSource }) => {
+const PostPage = ({ frontMatter, mdxSource }) => {
+  const featuredImage = frontMatter?.featuredImage
+    ? `/static/images/${frontMatter.featuredImage}`
+    : null;
+  const ogImage = featuredImage ? `https://www.missionmike.dev${featuredImage}` : null;
+
   return (
-    <Layout isProse={true}>
-      <h1>{title}</h1>
+    <Layout isProse={true} ogImage={ogImage}>
+      <h1>{frontMatter.title}</h1>
+      {featuredImage ? (
+        <div className="post-featured-image-container">
+          <Image
+            src={featuredImage}
+            fill
+            alt={frontMatter?.featuredImageAlt ? frontMatter.featuredImageAlt : ''}
+          />
+        </div>
+      ) : null}
       <MDXRemote {...mdxSource} components={MDXComponents} />
     </Layout>
   );

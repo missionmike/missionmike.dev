@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'social';
 @import 'blog';
+@import 'mixins';
 
 * {
   box-sizing: border-box;
@@ -64,4 +65,18 @@ p,
 iframe.w-full.relative {
   max-width: 100%;
   margin: 1rem 0;
+}
+
+.post-featured-image-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+
+  img {
+    object-fit: cover;
+  }
+
+  @include media-breakpoint-down(sm) {
+    height: 200px;
+  }
 }
