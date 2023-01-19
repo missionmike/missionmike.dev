@@ -34,7 +34,7 @@ const BlogPage = ({ posts }) => {
 export default BlogPage;
 
 export const getStaticProps = async () => {
-  const postsWithTag = getAllFiles('posts', [])
+  let postsWithTag = getAllFiles('posts', [])
     .map((file) => {
       const markdownWithMeta = fs.readFileSync(path.join(file), 'utf-8');
       const { data: frontMatter } = matter(markdownWithMeta);
@@ -52,6 +52,10 @@ export const getStaticProps = async () => {
       }
     })
     .filter((obj) => obj !== undefined);
+
+  postsWithTag = postsWithTag.sort((a, b) => {
+    return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime();
+  });
 
   return {
     props: {
