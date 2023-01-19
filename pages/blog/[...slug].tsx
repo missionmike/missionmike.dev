@@ -15,7 +15,12 @@ const PostPage = ({ frontMatter, mdxSource }) => {
   const ogImage = featuredImage ? `https://www.missionmike.dev${featuredImage}` : null;
 
   return (
-    <Layout isProse={true} ogImage={ogImage}>
+    <Layout
+      isProse={true}
+      ogImage={ogImage}
+      description={frontMatter?.summary}
+      title={`${frontMatter?.title ? frontMatter.title + ' | ' : ''}missionmike.dev`}
+    >
       <h1>{frontMatter.title}</h1>
       {featuredImage ? (
         <div className="post-featured-image-container">
