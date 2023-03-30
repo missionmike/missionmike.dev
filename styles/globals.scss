@@ -31,13 +31,15 @@ a {
 }
 
 h1 {
-  text-transform: uppercase;
+  // text-transform: uppercase;
+  letter-spacing: 0;
   font-size: 2rem;
 }
 
 .prose {
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    letter-spacing: -0.05rem;
     margin: 0 0 2rem 0;
   }
   h2 {
