@@ -26,8 +26,8 @@ without needing to leave their local network.
 If your setup does not have the front-end and back-end pods sharing the same cluster, there _is_ a
 workaround, although it's not quite as efficient.
 
-In a nutshell, this is what how we can handle this issue if both front-end and back-end are in the
-same cluster:
+In a nutshell, here's how we can handle this issue if both front-end and back-end are in the same
+cluster:
 
 **When a post is updated in the back-end, we need to trigger the following:**
 
@@ -43,14 +43,14 @@ accomplish the same:
 **When post is updated in back-end, we'd need to:**
 
 1. Make a _single_ Next.js API request to the front-end to revalidate a path.
-2. Next.js requests a list of its neighboring front-end pod IPs from Kubernetes.
-3. Next.js sends simultaneous async requests to all neighboring front-end pods to revalidate the
-   same path(s).
-4. If all requests return successfully, send one final request to the CDN to clear the path from CDN
-   cache.
+2. The receiving Next.js pod requests a list of its neighboring front-end pod IPs from Kubernetes.
+3. The Next.js pod sends simultaneous async requests to all neighboring front-end pods to revalidate
+   the same path(s).
+4. If all requests return successfully, the pod sends one final request to the CDN to clear the path
+   from CDN cache.
 
 As you can see, they're similar approaches, but the 2nd version requires an additional network
-request, which can cause the entire process to take _slightly_ more time.
+request, which can cause the entire process to take _slightly_ longer.
 
 For this article, we'll focus on the **first** approach.
 
@@ -154,7 +154,7 @@ For example, to get our list of pods within the cluster, we could make a `GET` r
 
 With the sidecar now set up, we can prepare the back-end code for WordPress in PHP. For brevity, I'm
 going to skip all the fundamental error handling and scaffolding required to write some proper
-classes and tests to support this. I'm going to skip straight to the main points.
+classes and tests to support this. Let's skip straight to the main points.
 
 Here's a helper function that we'll use to fetch a list of local pod IP addresses:
 
@@ -256,7 +256,7 @@ function revalidate_nextjs_cache( $relative_url = '' ) {
 ```
 
 **Note:** It should be fairly easy to modify this code to support an array of paths instead of a
-single path! Could be helpful to revalidate pages in bulk, say during a bulk post update.
+single path! This could be helpful to revalidate pages in bulk, say during a bulk post update.
 
 Finally, let's stitch these together to call this when a post is updated:
 
