@@ -34,17 +34,22 @@ export const CommonSEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:title" content={title} />
       {ogImage.constructor.name === 'Array' ? (
-        (ogImage as { url: string }[]).map(({ url }) => (
-          <meta property="og:image" content={url} key={url} />
-        ))
+        <>
+          {(ogImage as { url: string }[]).map(({ url }) => {
+            return <meta property="og:image" content={url} key={url} />;
+          })}
+          <meta name="twitter:image" content={(ogImage as { url: string }[])[0].url} />
+        </>
       ) : (
-        <meta property="og:image" content={ogImage as string} key={ogImage as string} />
+        <>
+          <meta property="og:image" content={ogImage as string} key={ogImage as string} />
+          <meta name="twitter:image" content={ogImage as string} key={ogImage as string} />
+        </>
       )}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={siteMetadata.twitter} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={twImage} />
       <link
         rel="canonical"
         href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
