@@ -31,7 +31,7 @@ export default function Home({
         <Row>
           <Col>
             <h1 className={styles.h1}>
-              MissionMike<span className={styles.suffix}>.dev</span>
+              missionmike<span className={styles.suffix}>.dev</span>
             </h1>
             <span className={styles.subtitle}>
               I&apos;m a software developer. I also do{' '}
