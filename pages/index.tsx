@@ -34,15 +34,7 @@ export default function Home({
               missionmike<span className={styles.suffix}>.dev</span>
             </h1>
             <span className={styles.subtitle}>
-              I&apos;m a software developer. I also do{' '}
-              {/* eslint-disable-next-line react/jsx-no-target-blank */}
-              <a
-                href="https://linktr.ee/missionmike"
-                target="_blank"
-                style={{ textDecoration: 'none' }}
-              >
-                some other things.
-              </a>
+              Software developer, graphic artist.
             </span>
             <SocialBar />
             <div className={styles.imageFrame}>

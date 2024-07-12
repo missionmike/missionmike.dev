@@ -18,13 +18,12 @@ import styles from './SocialBar.module.scss';
 const SocialBar = () => {
   return (
     <div className={styles.socialBar}>
-      <IconYouTube url={siteMetadata.youTube} />
       <IconLinkedIn url={siteMetadata.linkedIn} />
-      <IconTwitter url={siteMetadata.twitter} />
-      <IconFacebook url={siteMetadata.facebook} />
+      {/* <IconTwitter url={siteMetadata.twitter} /> */}
+      {/* <IconFacebook url={siteMetadata.facebook} /> */}
       <IconGitHub url={siteMetadata.gitHub} />
-      <IconInstagram url={siteMetadata.instagram} />
-      <IconTikTok url={siteMetadata.tikTok} />
+      {/* <IconInstagram url={siteMetadata.instagram} /> */}
+      {/* <IconTikTok url={siteMetadata.tikTok} /> */}
     </div>
   );
 };
