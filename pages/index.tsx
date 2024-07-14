@@ -34,7 +34,8 @@ export default function Home({
               missionmike<span className={styles.suffix}>.dev</span>
             </h1>
             <span className={styles.subtitle}>
-              Software developer, graphic artist.
+              software engineer on a mission to <br />
+              innovate, inspire &amp; iterate
             </span>
             <SocialBar />
             <div className={styles.imageFrame}>
@@ -46,31 +47,12 @@ export default function Home({
                   fill
                 />
               </ImageWrapper>
-              <p>
-                Playing video games with my kids and recording our gameplay together is my fav!!
-                Check out our YouTube channels{' '}
-                <a
-                  href="https://www.youtube.com/@MikeyNDaddy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Mikey &amp; Daddy
-                </a>{' '}
-                and{' '}
-                <a
-                  href="https://www.youtube.com/@sleepyslawths"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Sleepy Slawths
-                </a>
-                .
-              </p>
+              <p>Work hard, play hard!</p>
             </div>
           </Col>
           <Col lg className="d-flex flex-column justify-content-center">
             <Container>
-              <span className={styles.h2}>Latest attempt at writing:</span>
+              <span className={styles.h2}>Latest post:</span>
               <BlogPreview post={latestPost} />
             </Container>
             <Container>
@@ -86,7 +68,7 @@ export default function Home({
             </Container>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col className="d-flex flex-column justify-content-center">
             <Container className={styles.quoteContainer}>
               <span className={`${styles.h2} d-flex justify-content-center align-items-center`}>
@@ -119,7 +101,7 @@ export default function Home({
                   </em>
                 </p>
                 <p style={{ textAlign: 'right' }}>
-                  &mdash; Robert C. Martin (Uncle Bob),
+                  &mdash; Robert C. Martin
                   <br />
                   <a
                     href="https://www.oreilly.com/library/view/97-things-every/9780596809515/ch08.html"
@@ -132,8 +114,8 @@ export default function Home({
               </blockquote>
             </Container>
           </Col>
-        </Row>
-        <Row>
+        </Row> */}
+        {/* <Row>
           <Col lg>
             <div className={styles.imageFrame}>
               <ImageWrapper>
@@ -167,8 +149,8 @@ export default function Home({
               </p>
             </div>
           </Col>
-        </Row>
-        <Row>
+        </Row> */}
+        {/* <Row>
           <Col className="d-flex flex-column justify-content-center p-5">
             <Container className={styles.quoteContainer}>
               <span className={`${styles.h2} d-flex justify-content-center align-items-center`}>
@@ -196,7 +178,7 @@ export default function Home({
               </blockquote>
             </Container>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </Layout>
   );
