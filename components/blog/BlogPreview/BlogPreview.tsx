@@ -15,6 +15,7 @@ const BlogPreview = ({ post = {} }: { post: Post }) => {
   const briefTitle =
     frontMatter.title.length > 50 ? `${frontMatter.title.substring(0, 50)}...` : frontMatter.title;
   const writtenDate = frontMatter?.date ? frontMatter.date : null;
+  const updatedDate = frontMatter?.updated ? frontMatter.updated : writtenDate;
 
   return (
     <div className={styles.previewContainer}>
@@ -24,7 +25,7 @@ const BlogPreview = ({ post = {} }: { post: Post }) => {
       {writtenDate ? (
         <span className={styles.writtenDate}>
           Updated:{' '}
-          {new Date(writtenDate).toLocaleDateString('en-us', {
+          {new Date(updatedDate).toLocaleDateString('en-us', {
             weekday: 'long',
             year: 'numeric',
             month: 'short',
