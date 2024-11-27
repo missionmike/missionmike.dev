@@ -57,3 +57,25 @@
     border-radius: 0;
   }
 }
+
+.imageContainer {
+  display: flex;
+  margin: 2rem 0;
+  background-color: #eee;
+  padding: 1rem;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hr {
+  display: block;
+  margin: 3rem 0;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
