@@ -42,8 +42,16 @@ export const CommonSEO = ({
         </>
       ) : (
         <>
-          <meta property="og:image" content={ogImage as string} key={ogImage as string} />
-          <meta name="twitter:image" content={ogImage as string} key={ogImage as string} />
+          <meta
+            property="og:image"
+            content={ogImage as string}
+            key={`${ogImage as string}-og:image`}
+          />
+          <meta
+            name="twitter:image"
+            content={ogImage as string}
+            key={`${ogImage as string}-twitter:image`}
+          />
         </>
       )}
       <meta name="twitter:card" content="summary_large_image" />
