@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <Layout title={'About Michael R. Dinerstein (Mission Mike)'} isProse>
       <Container>
-        <h1>About Michael</h1>
+        <h1>Who is this guy?</h1>
         <SocialBar />
         <p>
           <Image
@@ -24,21 +24,29 @@ export default function Page() {
             className={`rounded ${styles.profileImg}`}
           ></Image>
           Growing up, Michael Dinerstein was one of those kids who would take things apart and put
-          them back together just to see how they “ticked.” Understanding the basics was never
-          enough. His interests weren’t just technical though, they were also creative. Playing
-          guitar at church services led to learning about live sound. When his parents got a PC in
-          the mid-90s his curiosity led him to learn the computer’s inner-workings. While learning
-          Microsoft BASIC, his first bit of code was, not surprisingly, a program that generated
-          tones to play a melody.
+          them back together just to see how they “ticked.”
         </p>
         <p>
-          After high school, Mike set his sights on pursuing something that would enable him to
-          utilize both his artistic and technical inclinations. This ultimately led to Web Design &
-          Development. This career path allowed him to incorporate his creative eye with a love of
-          programming, analytical thinking, and learning.
+          Understanding the basics was never enough. His interests weren’t just technical &mdash;
+          they were also creative.
         </p>
         <p>
-          Michael has been married to his lovely wife Yohana since 2012. They have four beautiful
+          Playing guitar at church services led to learning about live sound. When his parents got
+          family a PC in the mid-90s his curiosity led him to learn the computer’s inner-workings.
+          While learning Microsoft BASIC, his first bit of code was, not surprisingly, a program
+          that generated tones to play a melody.
+        </p>
+        <p>
+          After high school, Michael (aka &quot;Mission Mike&quot;) set his sights on pursuing
+          something that would enable him to utilize both his artistic and technical inclinations.
+        </p>
+        <p>
+          This ultimately led to Web Design & Development. This career path allowed him to
+          incorporate his creative eye with a love of programming, analytical thinking, and
+          learning.
+        </p>
+        <p>
+          Michael has been married to his lovely wife Yohana since 2012. They have five adoring
           children. He’s looking forward to seeing if his kids might also want to know how things
           “tick.”
         </p>
