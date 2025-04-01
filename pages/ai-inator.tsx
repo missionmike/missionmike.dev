@@ -9,11 +9,13 @@ const Textarea = ({
   onChange = () => {},
   onClick = () => {},
   placeholder,
+  readOnly = false,
 }: {
   value: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onClick?: (event: React.MouseEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
+  readOnly?: boolean;
 }) => (
   <textarea
     placeholder={placeholder}
@@ -27,6 +29,7 @@ const Textarea = ({
     value={value}
     onChange={onChange}
     onClick={onClick}
+    readOnly={readOnly}
   />
 );
 
@@ -35,10 +38,15 @@ const Page = () => {
   const [outputText, setOutputText] = React.useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputText(event.target.value);
+    setInputText(event.target.value.trim());
   };
 
   useEffect(() => {
+    if (inputText.length === 0) {
+      setOutputText('');
+      return;
+    }
+
     const randomAiEmojis = ['🚀', '🦾', '🧠', '💻', '👾', '🤖'];
 
     let newOutputText = inputText
@@ -86,7 +94,8 @@ const Page = () => {
         <Textarea placeholder="Enter text here..." value={inputText} onChange={handleInputChange} />
         <h2>Output 🚀</h2>
         <Textarea
-          placeholder="Enter more text here..."
+          placeholder="AI-inator output..."
+          readOnly
           value={outputText}
           onClick={() => {
             navigator.clipboard.writeText(outputText);
