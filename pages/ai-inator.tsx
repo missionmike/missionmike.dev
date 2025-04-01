@@ -36,6 +36,7 @@ const Textarea = ({
 const Page = () => {
   const [inputText, setInputText] = React.useState('');
   const [outputText, setOutputText] = React.useState('');
+  const [spongeBobMode, setSpongeBobMode] = React.useState(true);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(event.target.value.trim());
@@ -72,10 +73,24 @@ const Page = () => {
       );
     });
 
+    if (spongeBobMode) {
+      newOutputText = newOutputText
+        .split('')
+        .map((char) => {
+          const randomNumber = Math.floor(Math.random() * 10);
+          if (randomNumber % 2 === 0) {
+            return char.toLowerCase();
+          } else {
+            return char.toUpperCase();
+          }
+        })
+        .join('');
+    }
+
     newOutputText += '\n\n#aiinator #ai #emdashes #rockets #unseriously #takingjobs';
 
     setOutputText(newOutputText);
-  }, [inputText]);
+  }, [inputText, spongeBobMode]);
 
   return (
     <Layout isProse title={'AI-inator'}>
@@ -90,6 +105,16 @@ const Page = () => {
           You can also use this smart tool to generate some funny responses to your friends and/or
           trolls. Just enter some text and let the AI-inator do the rest.
         </p>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <input
+            type="checkbox"
+            checked={spongeBobMode}
+            onChange={() => setSpongeBobMode(!spongeBobMode)}
+            style={{ marginRight: '10px', width: '20px', height: '20px' }}
+            id="spongeBob"
+          />
+          <label htmlFor="spongeBob">SpongeBob Mode</label>
+        </div>
         <h2>Input 🧠</h2>
         <Textarea placeholder="Enter text here..." value={inputText} onChange={handleInputChange} />
         <h2>Output 🚀</h2>
