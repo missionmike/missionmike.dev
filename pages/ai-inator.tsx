@@ -105,16 +105,6 @@ const Page = () => {
           You can also use this smart tool to generate some funny responses to your friends and/or
           trolls. Just enter some text and let the AI-inator do the rest.
         </p>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <input
-            type="checkbox"
-            checked={spongeBobMode}
-            onChange={() => setSpongeBobMode(!spongeBobMode)}
-            style={{ marginRight: '10px', width: '20px', height: '20px' }}
-            id="spongeBob"
-          />
-          <label htmlFor="spongeBob">SpongeBob Mode</label>
-        </div>
         <h2>Input 🧠</h2>
         <Textarea placeholder="Enter text here..." value={inputText} onChange={handleInputChange} />
         <h2>Output 🚀</h2>
@@ -127,6 +117,17 @@ const Page = () => {
             alert('Copied to clipboard!');
           }}
         />
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '40px' }}>
+          <input
+            type="checkbox"
+            checked={spongeBobMode}
+            onChange={() => setSpongeBobMode(!spongeBobMode)}
+            style={{ marginRight: '10px', width: '20px', height: '20px' }}
+            id="spongeBob"
+          />
+          <label htmlFor="spongeBob">SpongeBob Mode Output</label>
+        </div>
+        <p>A Dr. Heinz Doofenshmirtz -inator for reference:</p>
         <Image
           src="/static/images/alien-inator.webp"
           width={1024}
