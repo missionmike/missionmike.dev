@@ -99,6 +99,7 @@ const Page = () => {
           value={outputText}
           onClick={() => {
             navigator.clipboard.writeText(outputText);
+            alert('Copied to clipboard!');
           }}
         />
         <Image
