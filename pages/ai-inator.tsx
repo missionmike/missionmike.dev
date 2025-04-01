@@ -93,7 +93,13 @@ const Page = () => {
   }, [inputText, spongeBobMode]);
 
   return (
-    <Layout isProse title={'AI-inator'}>
+    <Layout
+      isProse
+      pageSEO="common"
+      title={'AI-inator by Mission Mike'}
+      description={`Have some fun mocking AI with the AI-inator. 
+        Enter some text and let the AI-inator do the rest.`}
+    >
       <Container>
         <h1>AI-inator</h1>
         <p>
